@@ -18,8 +18,8 @@ class BLyrics:
 
     def search(self, search_str):
         path = 'search/'
-        request_uri = '/'.join([self.root,path])
-        print(request_uri + search_str)
+        request_url = '/'.join([self.root,path])
+        print(request_url + search_str)
         print()
 
         params = {'q': search_str}
@@ -27,7 +27,7 @@ class BLyrics:
         headers = {'Authorization': access_token, 
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
 
-        response = requests.get(request_uri, params=params, headers=headers)
+        response = requests.get(request_url, params=params, headers=headers)
         print(response.status_code)
         return response.text
 
@@ -59,13 +59,13 @@ class BLyrics:
         # say we have a song id for no role models
         song_id = ranked_song[1]
         path = 'songs/{}'.format(song_id)
-        request_uri = '/'.join([self.root,path])
+        request_url = '/'.join([self.root,path])
 
         params = {'text_format':'plain'}
         access_token = 'Bearer {}'.format(self.access_token)
         headers = {'Authorization': access_token, 
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
-        response = requests.get(request_uri, params=params, headers=headers)
+        response = requests.get(request_url, params=params, headers=headers)
         if response.status_code == 200:
             print('Request successful...')
         information = response.text
