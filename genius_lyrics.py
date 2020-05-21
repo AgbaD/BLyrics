@@ -1,10 +1,10 @@
-#! /usr/bin/python3
+#! /usr/bin/python
 # Author:   @BlankGodd
 
 import requests
 import ast, json
 from bs4 import BeautifulSoup
-import sys
+
 
 class BLyrics:
 
@@ -16,10 +16,6 @@ class BLyrics:
         self.root = 'https://api.genius.com'
 
     def search(self, search_str):
-        try:
-            search_str = search_str.replace(' ', '%20')
-        except:
-            pass
         path = 'search/'
         request_uri = '/'.join([self.root,path])
         print(request_uri + search_str)
@@ -31,15 +27,37 @@ class BLyrics:
 
         response = requests.get(request_uri, params=params, headers=headers)
         print(response.status_code)
-        if response.status_code == 200:
-            with open('test_search.json', 'a') as ts:
-                json.dump(response.text, ts)
-        else:
-            response.raise_for_status()
+        return response.text
+
+    def search_song(self, search_str):
+        # song = self.search(search_str)
+        # search for the song
+        # get the song id
+        # get the lyrics
+        # say we have a song id for no role models
+        song_id = '599427'
+        path = 'songs/{}'.format(song_id)
+        request_uri = '/'.join([self.root,path])
+        print(request_uri + search_str)
+
+        params = {'text_format':'plain'}
+        access_token = 'Bearer {}'.format(self.access_token)
+        headers = {'Authorization': access_token, 
+            'User-Agent':'https://github.com/BlankGodd/BLyrics'}
+        response = requests.get(request_uri, params=params, headers=headers)
+        print(response.status_code)
+        text = response.text
+        # after getting this we extract the link to the lyrics and other info
+        url = 'https://genius.com/J-cole-no-role-modelz-lyrics'
+        response2 = requests.get(url)
+        print(response2.status_code)
+        if response2.status_code == 200:
+            return response2.text
 
 
 b = BLyrics()
-b.search('Cole')
-
+x = b.search_song('No Role Modelz')
+with open('number_456.json', 'w') as at:
+    json.dump(x, at)
 
 
