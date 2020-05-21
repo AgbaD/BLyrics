@@ -1,2 +1,6 @@
 # BLyrics
-A script for getting song information and lyrics from genius using the genius api
+A script for getting song information and lyrics 
+
+[Requirements](requirements.txt)
+
+
