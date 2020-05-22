@@ -37,14 +37,19 @@ A CLI tool for interacting with Genius
 ```git
 git clone 'https://github.com/BlankGodd/BLyrics.git'
 ```
-> cd BLyrics
+```
+cd BLyrics
+```
 
 2. Install the dependencies
-> pip3 install -r requirements.txt
+```
+pip3 install -r requirements.txt
+```
 
 3. Run script 
-> python3 main.py
-
+```
+python3 main.py
+```
 
 ### Tasks
 - [X] search.py for searching on the api
