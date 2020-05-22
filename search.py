@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import re
 
 
-class BLyrics:
+class Genius_Lyrics:
 
     def __init__(self):
         with open('info.txt', 'r') as f:
@@ -31,8 +31,12 @@ class BLyrics:
         print(response.status_code)
         return response.text
 
+    def search_artist_song(self, song_title, artist_name):
+        pass
+
     def search_song(self, search_str):
         song = self.search(search_str)
+        song = json.loads(song)
         
         # number of songs
         num = len(song['response']['hits'])
@@ -45,15 +49,23 @@ class BLyrics:
             artist_id = song['response']['hits'][i]['result']['primary_artist']['id']
             lyrics_url = song['response']['hits'][i]['result']['url']
             ls = (title, song_id, artist, artist_id, lyrics_url)
-            songs.append = ls
+            songs.append(ls)
         print()
         for k in range(len(songs)):
             print(k+1,': ',songs[k][0], 'by', songs[k][2])
 
         print()
+        print('If preferred song not in list, enter -1')
         rank = int(input('Pick the number for intended song:\n'))
+        print()
+        if rank == -1:
+            name_of_artist = input('Enter name of artist: ')
+            return self.search_artist_song(search_str, name_of_artist)
+        else:
+            pass
         ranked_song = songs[rank-1]
         print(ranked_song[0], 'by', ranked_song[2])
+        print()
         print('Getting info...')
         
         # say we have a song id for no role models
@@ -69,6 +81,7 @@ class BLyrics:
         if response.status_code == 200:
             print('Request successful...')
         information = response.text
+        information = json.loads(information)
         # after getting this we extract the info we need
         print()
         print('Getting Lyrics...')
@@ -76,28 +89,82 @@ class BLyrics:
         response2 = requests.get(url)
         if response.status_code == 200:
             print('Request successful...')
+            print()
         # i need to understand this part     
         html = BeautifulSoup(response2.text, 'html.parser')
         lyrics = html.find('div', class_='lyrics').get_text()
         # and this part too
         lyrics = re.sub(r'[\(\[].*?[\)\]]', '', lyrics)
         description = information['response']['song']['description']['plain']
+        final = {'Title' : ranked_song[0], 'Artist' : ranked_song[2], 
+            'Description' : description, 'Lyrics' : lyrics}
+
+        return final
+
+    def search_artist(self, search_str):
+        artist_ = self.search(search_str)
+        artist = json.loads(artist_)
+        
+        num = len(artist['response']['hits'])
+        all_artist = []
+        for i in range(num):
+            name = artist['response']['hits'][i]['result']['primary_artist']['name']
+            artist_id = artist['response']['hits'][i]['result']['primary_artist']['id']
+            ls = (name, artist_id)
+            all_artist.append(ls)
+        for i in range(len(all_artist)):
+            print(i+1, all_artist[i][0])
+
         print()
-        print('Title: ',ranked_song[0]) 
-        print('Artist: ',ranked_song[2])
+        print("If artist not on list, enter 'e-x'")
+        try:
+            rank = int(input('Pick the number of intended artist: \n'))
+        except:
+            return
+        ranked_artist = all_artist[rank-1]
         print()
-        print('Description: 'description)
+        artist_id = ranked_artist[1]
         print()
-        print('Lyrics: 'lyrics)
+        print('Getting Info...')
+        path = 'artists/{}'.format(artist_id)
+        request_url = '/'.join([self.root, path])
 
-    def search_artist(self, artist):
-        artist_ = self.search(artist)
+        params = {'text_format':'plain'}
+        access_token = 'Bearer {}'.format(self.access_token)
+        headers = {'Authorization': access_token, 
+            'User-Agent':'https://github.com/BlankGodd/BLyrics'}
+        response = requests.get(request_url, params=params, headers=headers)
+        if response.status_code == 200:
+            print('Request successful...')
+            print()
+        information = response.text
+        information = json.loads(information)
+
+        aka = information['response']['artist']['alternate_names']
+        twitter_name = information['response']['artist']['twitter_name']
+        facebook_name = information['response']['artist']['facebook_name']
+        instagram_name = information['response']['artist']['instagram_name']
+        description = information['response']['artist']['description']['plain']
+        akas = ','.join(aka)
+
+        num = len(artist['response']['hits'])
+        songs_by = []
+        for i in range(num):
+            song_title = artist['response']['hits'][i]['result']['title']
+            songs_by.append(song_title)
+
+        final = {'artist_name' : ranked_artist[0], 'Aliases' : akas, 
+        'Twitter Handle' : twitter_name, 'Instagram Handle' : instagram_name, 
+        'Facebook Name' : facebook_name, 'Description' : description,
+        'songs' : songs_by}
+
+        return final
+
+        
 
 
-
-b = BLyrics()
-x = b.search_song('No Role Modelz')
-with open('number_456.json', 'w') as at:
-    json.dump(x, at)
+if __name__ == '__main__':
+    b = Genius_Lyrics()
+    b.search_artist('Cole')
 
 
