@@ -1,7 +1,7 @@
 # BLyrics :notes: 
 ```
 Building still under construction 
-Please do **NOT** enter yet! :muscle:
+Please do **NOT** enter yet! 
 ```
 Leveraging the Genius api for search and update purposes
 
@@ -13,9 +13,9 @@ A CLI tool for interacting with Genius
 
 ## API functions include
 1. Getting infomation 
-- Songs :sound:
-- Artists :sunglasses:
-- Lyrics :memo:
+   - Songs :sound:
+   - Artists :sunglasses:
+   - Lyrics :memo:
 
 2. Personal account usage
    - Getting and providing user review on songs
@@ -34,8 +34,9 @@ A CLI tool for interacting with Genius
 
 ## Usage
 1. Clone the repository
-> git clone 'https://github.com/BlankGodd/BLyrics'
-
+```git
+git clone 'https://github.com/BlankGodd/BLyrics.git'
+```
 > cd BLyrics
 
 2. Install the dependencies
