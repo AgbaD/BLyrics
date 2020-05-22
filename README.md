@@ -1,9 +1,9 @@
 # BLyrics
-Leveraging the Genius api search and update purposes
+Leveraging the Genius api for search and update purposes
 
 A CLI bot for Genius
 
-##Processes include
+## Processes include
 Getting infomation about
 
 -Songs
