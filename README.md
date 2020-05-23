@@ -34,10 +34,9 @@ A CLI tool for interacting with Genius
 
 ## Usage
 1. Clone the repository
-```git
+```BrainFuck
 git clone 'https://github.com/BlankGodd/BLyrics.git'
-```
-```
+
 cd BLyrics
 ```
 
