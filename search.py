@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#!/usr/bin/python
 # Author:   @BlankGodd
 
 import requests
@@ -105,7 +105,6 @@ class Genius_Lyrics:
             description = None
         final = {'Title' : ranked_song[0], 'Artist' : ranked_song[2], 
             'Description' : description, 'Lyrics' : lyrics, 'song_id' : song_id}
-        print(lyrics)
 
         return final
 
@@ -177,8 +176,9 @@ class Genius_Lyrics:
     def search_artist_song(self, artist_id):
         path = 'artists/{}/songs'.format(artist_id)
         request_url = '/'.join([self.root, path])
+        print('Getting songs by Artist...')
 
-        params = {'sort':'popularity','per_page': 13, 'page': 1}
+        params = {'sort':'popularity','per_page': 23, 'page': 1}
         access_token = 'Bearer {}'.format(self.access_token)
         headers = {'Authorization': access_token, 'application' : 'BLyrics',
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
@@ -188,7 +188,6 @@ class Genius_Lyrics:
             print()
         else:
             return None
-        returned = response.text
         returned = json.loads(response.text)
 
         final = {}
@@ -197,19 +196,15 @@ class Genius_Lyrics:
             song_id = returned['response']['songs'][i]['id']
             song_title = returned['response']['songs'][i]['title_with_featured']
             final[song_id] = song_title
+            
         return final
         
 
 
 if __name__ == '__main__':
     b = Genius_Lyrics()
-    s = b.search_artist('Cole')
-    d = b.search_song('Middle Child')
-    for i in range(7):
-        print()
-    if s:
-        print('search for Cole complete')
-    if d:
-        print('search for Middle Child complete')
-
+    d = b.search_song('Fire Squad')
+    c = d['Lyrics']
+    with open('fire_Squad.txt', 'w') as fs:
+        fs.write(c)
 

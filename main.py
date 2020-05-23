@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#!/usr/bin/python
 # Author:   @BlankGodd
 
 from blyrics import Genius_Lyrics

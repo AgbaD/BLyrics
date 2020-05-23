@@ -1,9 +1,9 @@
-#! /usr/bin/python
+#!/usr/bin/python
 # Author:   @BlankGodd
 
 def banner():
     banner = """
-    
+
     /3  3  3  3 
      3          3
     /3          3

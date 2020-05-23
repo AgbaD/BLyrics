@@ -19,8 +19,8 @@ A CLI tool for interacting with Genius
 
 2. Personal account usage
    - Getting and providing user review on songs
-     - Viewing attonations :pushpin:
-     - Posting attonations :black_nib:
+     - Viewing annotations :pushpin:
+     - Posting annotations :black_nib:
    - Performing user actions
      - Voting :+1: or :-1:
      - Getting account information :bowtie:
@@ -57,6 +57,7 @@ $ python3 main.py
 - [ ] web.py general genius web info
 - [ ] save.py for saving prefrences
 - [ ] autentication page
+- [ ] requests should retry about 5 times of it encounters an error
 
 ### Contributors
 @BlankGodd
