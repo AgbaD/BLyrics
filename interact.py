@@ -42,12 +42,36 @@ class Interact:
             return None
 
         referents = response.text
-        # referents = json.loads(response.text)
-        return referents
+        referents = json.loads(response.text)
+        
+        referents_total = []
+        num = len(referents['response']['referents'])
+        for i in range(num):
+            annotator_name = referents['response']['referents'][i]['annotator_login']
+            annotator_id = referents['response']['referents'][i]['annotator_id']
+            song_id_from = referents['response']['referents'][i]['annotatable']['id']
+            fragment = referents['response']['referents'][i]['fragment']
+            annotations_id = referents['response']['referents'][i]['annotations'][0]['id']
+            annotation = referents['response']['referents'][i]['annotations'][0]['body']['plain']
+            ls = (annotator_name, annotator_id, song_id_from, fragment,
+                    annotations_id, annotation)
+            referents_total.append(ls)
+
+        return referents_total
+
 
 if __name__ == '__main__':
     b = Interact()
     a = b.get_referents(song_id = '599417')
-    with open('referents_file.json', 'w') as rf:
-        json.dump(a, rf)
+    for i in range(len(a)):
+        print()
+        print(i+1)
+        print('---------------------------------------------------------------------------------------------------')
+        print(a[i][0])
+        print()
+        print(a[i][3])
+        print()
+        print(a[i][5])
+        print('---------------------------------------------------------------------------------------------------')
+        print()
 
