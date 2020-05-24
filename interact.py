@@ -95,7 +95,7 @@ class Interact:
             'referent': {
                 'raw_annotatable_url': page_url,
                 'fragment': fragment
-            }
+            },
             'web_page': {
                 'canonical_url': canonical_url,
                 'og_url': og_url,
@@ -113,6 +113,7 @@ class Interact:
             payload['referent']['context_for_display'] = cfd
 
         print('Creating Annotation...')
+        print(payload)
         params = payload
         access_token = 'Bearer {}'.format(self.access_token)
         headers = {'Authorization': access_token, 'application' : 'BLyrics',
@@ -130,6 +131,7 @@ class Interact:
 
 if __name__ == '__main__':
     b = Interact()
-    b.create_annotations(page_url='',page_title='')
+    b.create_annotations(page_url='https://genius.com/J-cole-fire-squad-lyrics',
+                page_title='J. Cole – Fire Squad Lyrics | Genius Lyrics')
     
 

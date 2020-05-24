@@ -53,7 +53,8 @@ $ python3 main.py
 ### Tasks
 - [X] search.py for searching on the api
 - [ ] main.py for user in
-- [ ] interact.py for interacting with the 
+- [ ] interact.py for interacting with the api
+  - [ ] create annotation has issues
 - [ ] web.py general genius web info
 - [ ] save.py for saving prefrences
 - [ ] autentication page

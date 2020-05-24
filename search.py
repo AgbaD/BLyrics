@@ -7,9 +7,20 @@ from bs4 import BeautifulSoup
 import re
 
 
-class Genius_Lyrics:
+class Search_Genius:
     """Songs, Artists and Search"""
     def __init__(self):
+        """Constructor for search genius 
+
+        Methods
+            - search: to make a general search
+            - search_song: searching for songs using song_id
+                leverages the search method first
+            - search_artist: searches for artist info using artist_id
+                leverages the search method first
+            - search_artist_song: searches for songs by artist
+        """
+
         with open('info.txt', 'r') as f:
             tok = ast.literal_eval(f.read())
 
@@ -33,6 +44,15 @@ class Genius_Lyrics:
             return None
 
     def search_song(self, search_str):
+        """Search songs
+
+        Params:
+            - song title
+        Return:
+            - dict object
+            - information about song
+            - song lyrics
+        """
         song = self.search(search_str)
         if not song:
             return None
@@ -102,16 +122,30 @@ class Genius_Lyrics:
 
         try:
             description = information['response']['song']['description']['plain']
+            release_date = information['response']['song']['release_date_for_display']
+            recording_location = information['response']['song']['recording_location']
         except:
             description = None
+            recording_location = None
+            release_date_for_display = None
         final = {'Title' : ranked_song[0], 'Artist' : ranked_song[2], 
             'Description' : description, 'Lyrics' : lyrics, 
             'song_id' : song_id, 'lyrics_url' : ranked_song[4],
-            'page_title' : page_title}
+            'page_title' : page_title, 'recording_location' : recording_location,
+            'release_date' : release_date}
 
         return final
 
     def search_artist(self, search_str):
+        """Search about a particular artist
+        For getting information
+
+        Params:
+            - Artist name (str)
+        Return:
+            - dict object
+            - Information about artist
+        """
         artist_ = self.search(search_str)
         artist = json.loads(artist_)
         
@@ -157,6 +191,7 @@ class Genius_Lyrics:
         facebook_name = information['response']['artist']['facebook_name']
         instagram_name = information['response']['artist']['instagram_name']
         description = information['response']['artist']['description']['plain']
+        image_url = information['response']['artist']['image_url']
         akas = ','.join(aka)
 
         # dictionary id : song title
@@ -172,11 +207,21 @@ class Genius_Lyrics:
         final = {'artist_name' : ranked_artist[0], 'Aliases' : akas, 
         'Twitter Handle' : twitter_name, 'Instagram Handle' : instagram_name, 
         'Facebook Name' : facebook_name, 'Description' : description,
-        'songs' : artist_songs}
+        'songs' : artist_songs, 'image_url' : image_url}
 
         return final
 
     def search_artist_song(self, artist_id):
+        """Searching for all songs by artist
+
+        Params:
+            - artist_id : Genius id for artist
+
+        Returns:
+            - dict object containing songs
+            - key = song_id
+            - value = song_title
+        """
         path = 'artists/{}/songs'.format(artist_id)
         request_url = '/'.join([self.root, path])
         print('Getting songs by Artist...')
@@ -205,7 +250,7 @@ class Genius_Lyrics:
 
 
 if __name__ == '__main__':
-    b = Genius_Lyrics()
+    b = Search_Genius()
     d = b.search_song('Fire Squad')
     
 
