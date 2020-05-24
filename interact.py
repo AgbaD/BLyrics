@@ -127,11 +127,34 @@ class Interact:
             print('Could not create annotaton :( ')
             print('Please try again.')
 
+    def upvote_annotation(self, annotation_id):
+        """For voting an annotation positive
+
+        Params:
+            - annotation_id
+        Returns:
+            - str: voting status
+        """
+        print('Voting...')
+        print()
+        path = 'annotations/{}/upvote'.format(annotation_id)
+        request_url = '/'.join([self.root, path])
+
+        access_token = 'Bearer {}'.format(self.access_token)
+        headers = {'Authorization': access_token, 'application' : 'BLyrics',
+            'User-Agent':'https://github.com/BlankGodd/BLyrics'}
+        
+        response = requests.put(request_url, headers=headers)
+        if response.status_code == 200:
+            print('Voting complete...')
+            print()
+        else:
+            print('Unable to vote. Please retry!')
+
 
 
 if __name__ == '__main__':
     b = Interact()
-    b.create_annotations(page_url='https://genius.com/J-cole-fire-squad-lyrics',
-                page_title='J. Cole – Fire Squad Lyrics | Genius Lyrics')
+    b.upvote_annotation(':8088450')
     
 

@@ -54,10 +54,10 @@ $ python3 main.py
 - [X] search.py for searching on the api
 - [ ] main.py for user in
 - [ ] interact.py for interacting with the api
-  - [ ] create annotation has issues
+  - [ ] create annotation, voting has issues (issue with authentication and scope)
 - [ ] web.py general genius web info
 - [ ] save.py for saving prefrences(lyrics and song info, artist_info)
-- [ ] autentication page
+- [ ] autentication . account_info and entry page
 - [ ] requests should retry about 5 times of it encounters an error
 
 ### Contributors
