@@ -52,7 +52,7 @@ class Genius_Lyrics:
             songs.append(ls)
         print()
         for k in range(len(songs)):
-            print(k+1,': ',songs[k][0], 'by', songs[k][2])
+            print(k+1,':', songs[k][0], 'by', songs[k][2])
 
         print()
         print('If preferred song not in list, search artist name')
@@ -93,6 +93,7 @@ class Genius_Lyrics:
             print()
             # i need to understand this part     
             html = BeautifulSoup(response2.text, 'html.parser')
+            page_title = html.find('title').get_text()
             lyrics = html.find('div', class_='lyrics').get_text()
             lyrics = re.sub(r'[\(\[].*?[\)\]]', '', lyrics)
             ##################################3
@@ -104,7 +105,9 @@ class Genius_Lyrics:
         except:
             description = None
         final = {'Title' : ranked_song[0], 'Artist' : ranked_song[2], 
-            'Description' : description, 'Lyrics' : lyrics, 'song_id' : song_id}
+            'Description' : description, 'Lyrics' : lyrics, 
+            'song_id' : song_id, 'lyrics_url' : ranked_song[4],
+            'page_title' : page_title}
 
         return final
 
@@ -204,7 +207,5 @@ class Genius_Lyrics:
 if __name__ == '__main__':
     b = Genius_Lyrics()
     d = b.search_song('Fire Squad')
-    c = d['Lyrics']
-    with open('fire_Squad.txt', 'w') as fs:
-        fs.write(c)
+    
 
