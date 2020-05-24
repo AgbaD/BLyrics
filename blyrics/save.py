@@ -2,6 +2,7 @@
 # Author:   @BlankGodd
 
 import os
+import json
 
 class Save:
     """For saving information to files"""
@@ -21,6 +22,7 @@ class Save:
         Properties:
             -Name: Artist name
             -Alias: Artist aliases
+            -Description: Information about artist
             -Twitter: Twitter handle
             -Instagram: Instagram handle
             -Image: Image Url
@@ -45,13 +47,14 @@ class Save:
                 song_list.append(v)
             songs = '\n'.join(song_list)
 
-        vars = """\nName: {0} \nAlias: {1} \nTwitter: {2} \nInstagram: {3} \nImage Url: {4} \nSongs: {5}
-        """.format(tbs['artist_name'],tbs['Aliases'],tbs['Twitter Handle'],tbs['Instagram Handle'],
-                tbs['image_url'],songs)
+        vars = {'Name': tbs['artist_name'],'Alias': tbs['Aliases'],
+                'Description': tbs['Description'],'Twitter': tbs['Twitter Handle'],
+                'Instagram': tbs['Instagram Handle'],'Image Url': tbs['image_url'],
+                'Songs': songs}
         
-        file_name = '{}.txt'.format(tbs['artist_name'])
+        file_name = '{}.json'.format(tbs['artist_name'])
         with open(file_name, 'w') as fn:
-            fn.write(vars)
+            json.dump(vars, fn)
 
         print()
         print('Saving complete...')
@@ -77,12 +80,13 @@ class Save:
         else:
             os.mkdir(full_path)
 
-        vars = """\nTitle: {0} \nArtist: {1} \nRelease Date: {2} \nRecording Location: {3} \nDescription: {4} \nLyrics: {5}
-        """.format(tbs['Title'],tbs['Artist'],tbs['release_date'],tbs['recording_location'],tbs['Description'],tbs['Lyrics'])
+        vars = {'Title': tbs['Title'],'Artist': tbs['Artist'],'Release Date': tbs['release_date'],
+                'Recording Location': tbs['recording_location'],'Description': tbs['Description'],
+                'Lyrics': tbs['Lyrics']}
 
-        file_name = '{}.txt'.format(tbs['Title'])
+        file_name = '{}.json'.format(tbs['Title'])
         with open(file_name, 'w') as fn:
-            fn.write(vars)
+            json.dump(vars, fn)
 
         print()
         print('Saving complete...')

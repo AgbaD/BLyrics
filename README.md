@@ -15,6 +15,7 @@ Leveraging the Genius api
    - Songs :sound:
    - Artists :sunglasses:
    - Lyrics :memo:
+   - Annotations :pen:
 
 2. Saving prefrences :zap:
    - Artist Info
@@ -49,6 +50,8 @@ $ python3 main.py
 ### Tasks
 - [X] search.py for searching on the api
 - [ ] main.py for user in
+- [ ] as module (__init __.py).strip()
+- [ ] as script (script.py)
 - [X] interact.py for getting referents and annotations
 - [ ] web.py general genius web info
 - [X] save.py for saving prefrences(lyrics and song info, artist_info)
