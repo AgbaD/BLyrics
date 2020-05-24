@@ -56,7 +56,7 @@ $ python3 main.py
 - [ ] interact.py for interacting with the api
   - [ ] create annotation has issues
 - [ ] web.py general genius web info
-- [ ] save.py for saving prefrences
+- [ ] save.py for saving prefrences(lyrics and song info, artist_info)
 - [ ] autentication page
 - [ ] requests should retry about 5 times of it encounters an error
 
