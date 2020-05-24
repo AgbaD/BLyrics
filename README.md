@@ -3,9 +3,8 @@
 Building still under construction 
 Please do **NOT** enter yet! 
 ```
-Leveraging the Genius api for search and update purposes
-
 A CLI tool for interacting with Genius
+Leveraging the Genius api 
 
 ## Screeenshots
 - 
@@ -17,14 +16,11 @@ A CLI tool for interacting with Genius
    - Artists :sunglasses:
    - Lyrics :memo:
 
-2. Personal account usage
-   - Getting and providing user review on songs
-     - Viewing annotations :pushpin:
-     - Posting annotations :black_nib:
-   - Performing user actions
-     - Voting :+1: or :-1:
-     - Getting account information :bowtie:
-     - Saving prefrences :zap:
+2. Saving prefrences :zap:
+   - Artist Info
+   - Song info and lyrics
+   
+3. Latest information and articles
 
 ## Requirements
 1. Python3 
@@ -53,12 +49,15 @@ $ python3 main.py
 ### Tasks
 - [X] search.py for searching on the api
 - [ ] main.py for user in
-- [ ] interact.py for interacting with the api
-  - [ ] create annotation, voting has issues (issue with authentication and scope)
+- [X] interact.py for getting referents and annotations
 - [ ] web.py general genius web info
-- [ ] save.py for saving prefrences(lyrics and song info, artist_info)
-- [ ] autentication . account_info and entry page
+- [X] save.py for saving prefrences(lyrics and song info, artist_info)
 - [ ] requests should retry about 5 times of it encounters an error
+
+#Later versioins (if)
+- [ ] autentication . account_info and entry page
+- [ ] create annotation, voting has issues (issue with authentication and scope)
+
 
 ### Contributors
 @BlankGodd
