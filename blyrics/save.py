@@ -15,8 +15,13 @@ class Save:
             - save_song: saving song information
         """
         self.dir_name = 'Blyrics_Files'
+        working_dir = os.getcwd()
+        os.chdir('..')
+        self.path = os.getcwd()
+        os.chdir(working_dir)
 
-    def save_artist(self, dir_path, tbs):
+    def save_artist(self, tbs):
+        dir_path = self.path
         """For saving information about artist to a file
         
         Properties:
@@ -59,7 +64,8 @@ class Save:
         print()
         print('Saving complete...')
 
-    def save_song(self, dir_path, tbs):
+    def save_song(self, tbs):
+        dir_path = self.path
         """For saving information about song and song lyrics
         
         Properties:

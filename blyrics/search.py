@@ -21,10 +21,7 @@ class Search_Genius:
             - search_artist_song: searches for songs by artist
         """
 
-        with open('info.txt', 'r') as f:
-            tok = ast.literal_eval(f.read())
-
-        self.access_token = tok['access_token']
+        self.access_token = 'pX_ZcyoBxAKt8Z2F9oCOASPTzspv9er17wWCAPNIwIWcr5Lg_AyMRgGsx846LVAE'
         self.root = 'https://api.genius.com'
 
     def search(self, search_str):
@@ -37,11 +34,16 @@ class Search_Genius:
         headers = {'Authorization': access_token, 'application' : 'BLyrics',
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
 
-        response = requests.get(request_url, params=params, headers=headers)
-        if response.status_code == 200:
-            return response.text
-        else:
-            return None
+        i = 0
+        while i < 3: # try reconnecting 2 times if status_code != 200
+            try:
+                response = requests.get(request_url, params=params, headers=headers)
+                if response.status_code == 200:
+                    return response.text
+            except:
+                pass
+            i += 1
+        return None
 
     def search_song(self, search_str):
         """Search songs
@@ -92,33 +94,47 @@ class Search_Genius:
         access_token = 'Bearer {}'.format(self.access_token)
         headers = {'Authorization': access_token, 'application' : 'BLyrics',
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
-        response = requests.get(request_url, params=params, headers=headers)
-        information = ''
-        if response.status_code == 200:
-            print('Request successful...')
-            information = response.text
-            information = json.loads(information)
-        else:
-            information = None
+        i = 0
+        information = None
+        while i < 3:
+            try:
+                response = requests.get(request_url, params=params, headers=headers)
+                if response.status_code == 200:
+                    print('Request successful...')
+                    information = response.text
+                    information = json.loads(information)
+                    break
+            except:
+                pass
+            i += 1
+        
         # after getting this we extract the info we need
         print()
         print('Getting Lyrics...')
         url = ranked_song[4]
         headers_ = {'application' : 'BLyrics',
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
-        response2 = requests.get(url, headers=headers_)
-        lyrics = ''
-        if response2.status_code == 200:
-            print('Request successful...')
-            print()
-            # i need to understand this part     
-            html = BeautifulSoup(response2.text, 'html.parser')
-            page_title = html.find('title').get_text()
-            lyrics = html.find('div', class_='lyrics').get_text()
-            lyrics = re.sub(r'[\(\[].*?[\)\]]', '', lyrics)
-            ##################################3
-        else:
-            lyrics = None
+        lyrics = None
+        page_title = ''
+        i,j = 0,0
+        while i < 5:
+            while j < 3:
+                try:
+                    response2 = requests.get(url, headers=headers_)
+                    if response2.status_code == 200:
+                        print('Request{} successful...'.format(i + 1))
+                        print()
+                        # i need to understand this part     
+                        html = BeautifulSoup(response2.text, 'html.parser')
+                        page_title = html.find('title').get_text()
+                        lyrics = html.find('div', class_='lyrics').get_text()
+                        lyrics = re.sub(r'[\(\[].*?[\)\]]', '', lyrics)
+                        ##################################3
+                        break
+                except:
+                    pass
+                j += 1
+            i += 1
 
         try:
             description = information['response']['song']['description']['plain']
@@ -177,12 +193,20 @@ class Search_Genius:
         access_token = 'Bearer {}'.format(self.access_token)
         headers = {'Authorization': access_token, 'application' : 'BLyrics',
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
-        response = requests.get(request_url, params=params, headers=headers)
-        if response.status_code == 200:
-            print('Request successful...')
-            print()
-        else:
-            return None
+        i = 0
+        response = None
+        while i < 3:
+            try:
+                response = requests.get(request_url, params=params, headers=headers)
+                if response.status_code == 200:
+                    print('Request successful...')
+                    print()
+                    break
+            except:
+                pass
+            i += 1
+        if response == None:
+            return response
         information = response.text
         information = json.loads(information)
 
@@ -230,12 +254,19 @@ class Search_Genius:
         access_token = 'Bearer {}'.format(self.access_token)
         headers = {'Authorization': access_token, 'application' : 'BLyrics',
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
-        response = requests.get(request_url, params=params, headers=headers)
-        if response.status_code == 200:
-            print('Request successful...')
-            print()
-        else:
-            return None
+        i = 0
+        response = None
+        while i < 3:
+            try:
+                response = requests.get(request_url, params=params, headers=headers)
+                if response.status_code == 200:
+                    print('Request successful...')
+                    print()
+            except:
+                pass
+            i += 1
+        if response == None:
+            return response
         returned = json.loads(response.text)
 
         final = {}

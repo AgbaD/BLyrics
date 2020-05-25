@@ -3,15 +3,26 @@
 
 from pyfiglet import Figlet
 from search import Search_Genius
+from interact import Interact
 from save import Save
-import time
+from web import Web
+import time, os
 
 
 class Script:
-    
+    """For using BLyrics as a script instead of a module"""
     def __init__(self):
+        """Constructor for Script class
+        
+        Methods:
+            - start: to start the main script
+            - get_articles: to retrieve articles from the genius web page
+            - get_Searching: to initiate the searching module
+            - get_chart: to retrieve a chart of the top 10 songs
+        """
         banner = Figlet(font='standard')
         print(banner.renderText("BLyrics"))
+
 
         print()
         print("Welcome To BLyrics")
@@ -51,12 +62,21 @@ class Script:
             self.start()
         
     def get_articles(self):
+        """To get news and articles
+        
+        Returns:
+            - Title: Article title
+            - Body: Body of article
+        """
         print()
         print('Articles')
         # call get articles module
-    
+
+    def get_chart(self):
+        pass
+
     def get_searching(self):
-        """To starting searchin
+        """To starting searching
         
         Properties:
             Artist:
@@ -109,7 +129,7 @@ class Script:
             return
 
         if not response:
-            print('{} not found. Please retry!'.format(search_str))
+            print('{} not found. (Service Timeout) Please retry!'.format(search_str))
             self.get_searching()
             return
 
@@ -140,17 +160,13 @@ class Script:
                 for k,v in songs.items():
                     print(v)   
         else:
-            {'Title' : ranked_song[0], 'Artist' : ranked_song[2], 
-            'Description' : description, 'Lyrics' : lyrics, 
-            'song_id' : song_id, 'lyrics_url' : ranked_song[4],
-            'page_title' : page_title, 'recording_location' : recording_location,
-            'release_date' : release_date}
             title = response['Title']
             artist = response['Artist']
             description = response['Description']
             lyrics = response['Lyrics']
             recording_location = response['recording_location']
             release_date = response['release_date']
+            song_id = response['song_id']
 
             print()
             print('Song Title: {}'.format(title))
@@ -167,11 +183,41 @@ class Script:
 
             print('Would you like to view annotations')
             an = input('y/n: ').lower()
+            print()
             if an == 'back' or an == 'menu':
                 self.start()
                 return
             if an == 'y':
-                pass
+                referents = Interact.get_referents(song_id = song_id)
+                num = len(referents)
+                annotations = {}
+                for i in range(num):
+                    annotator_name = referents[i][0]
+                    fragment = referents[i][3]
+                    annotation = referents[i][5]
+                    ls = (annotator_name, fragment, annotation)
+                    annotations[i+1] = ls
+                print()
+                print('There are {} anootations for the track'.format(num))
+                print('1: View all annotations')
+                print('2: Cancel')
+                command = input(': ')
+                if command == '1':
+                    for k,v in annotations.items():
+                        print()
+                        print('---------------------------------------------------------------------------------')
+                        print(k)
+                        print('Annotator: {}'.format(v[0]))
+                        print()
+                        print('Highlight: \n{}'.format(v[1]))
+                        print()
+                        print('Annotations/Notes \n{}'.format(v[2]))
+                        print('---------------------------------------------------------------------------------')
+                elif command == 'back' or command == 'menu':
+                    self.start()
+                    return
+                else:
+                    pass
             else:
                 pass
 
@@ -180,13 +226,12 @@ class Script:
         sv = input('y/n: ').lower:
         if sv == 'y':
             if command == '1':
-                Save.save_artist(path,response)
+                Save.save_artist(response)
             else:
-                Save.save_song(path, response)
-        elif sv == 'back' or sv == 'menu':
-            self.start()
+                Save.save_song(response)
+            print('File saved to BLyrics_Files directory')
         else:
-            pass
+            self.start()
         
         
         

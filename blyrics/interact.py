@@ -10,12 +10,18 @@ class DupError(Exception):
     pass
 
 class Interact:
-
+    """For getting referents"""
     def __init__(self):
-        with open('info.txt', 'r') as f:
-            tok = ast.literal_eval(f.read())
+        """Interact class constructor
+        
+        Method:
+            - get_referents: for getting referents and annotations 
+                Params:
+                    - song_id
+                    -creator_id
+        """
 
-        self.access_token = tok['access_token']
+        self.access_token = 'pX_ZcyoBxAKt8Z2F9oCOASPTzspv9er17wWCAPNIwIWcr5Lg_AyMRgGsx846LVAE'
         self.root = 'https://api.genius.com'
 
     def get_referents(self, song_id = None, webpage_id = None,
@@ -34,12 +40,20 @@ class Interact:
         headers = {'Authorization': access_token, 'application' : 'BLyrics',
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
         
-        response = requests.get(request_url, params=params, headers=headers)
-        if response.status_code == 200:
-            print('Request Successful...')
-            print()
-        else:
-            return None
+        response = None
+        i = 0
+        while i < 3:    # try reconnecting 2 times if status_Code != 200
+            try:
+                response = requests.get(request_url, params=params, headers=headers)
+                if response.status_code == 200:
+                    print('Request Successful...')
+                    print()
+                    break
+            except:
+                pass
+            i += 1
+        if response == None:
+            return response
 
         referents = response.text
         referents = json.loads(response.text)
