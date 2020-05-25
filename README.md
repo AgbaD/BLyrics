@@ -1,7 +1,8 @@
 # BLyrics :notes: 
 ```
 Building still under construction 
-Please do **NOT** enter yet! 
+You can entr now!
+But don't move anything yet 
 ```
 A CLI tool for interacting with Genius
 
@@ -33,7 +34,7 @@ Leveraging the Genius api with python
 ## Usage
 1. Clone the repository
 ```sh
-$ git clone 'https://github.com/BlankGodd/BLyrics.git'
+$ git clone https://github.com/BlankGodd/BLyrics.git
 
 $ cd BLyrics
 ```
@@ -43,8 +44,11 @@ $ cd BLyrics
 ```sh
 $ pip3 install -r requirements.txt
 ```
-
-4. Run script 
+4. Move into scripts directory
+```sh
+$ cd blyrics
+```
+5. Run script 
 ```sh
 $ python3 main.py
 ```
