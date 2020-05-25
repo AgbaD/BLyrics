@@ -243,11 +243,11 @@ class Tool:
                     ls = (annotator_name, fragment, annotation)
                     annotations[i+1] = ls
                 print()
-                print('There are {} anootations for the track'.format(num))
+                print('There are {} annotations for the track'.format(num))
                 print('1: View all annotations')
                 print('2: Cancel')
-                command = input(': ')
-                if command == '1':
+                commandd = input(': ')
+                if commandd == '1':
                     for k,v in annotations.items():
                         print()
                         print('---------------------------------------------------------------------------------')
@@ -258,7 +258,7 @@ class Tool:
                         print()
                         print('Annotations/Notes \n{}'.format(v[2]))
                         print('---------------------------------------------------------------------------------')
-                elif command == 'back' or command == 'menu':
+                elif commandd == 'back' or commandd == 'menu':
                     self.start()
                     return
                 else:

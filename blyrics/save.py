@@ -43,7 +43,7 @@ class Save:
         else:
             os.mkdir(full_path)
 
-        songs = tbs[songs]
+        songs = tbs['songs']
         if type(songs) == list:
             songs = '\n'.join(songs)
         else:
@@ -57,10 +57,18 @@ class Save:
                 'Instagram': tbs['Instagram Handle'],'Image Url': tbs['image_url'],
                 'Songs': songs}
         
-        f_name = '{}.json'.format(tbs['artist_name'])
-        file_name = os.path.join(full_path, f_name)
-        with open(file_name, 'w') as fn:
-            json.dump(vars, fn)
+        print('Save to json(1) or txt(2)')
+        typee = input('1/2: ')
+        if typee == '1':
+            f_name = '{}.json'.format(tbs['artist_name'])
+            file_name = os.path.join(full_path, f_name)
+            with open(file_name, 'w') as fn:
+                json.dump(vars, fn)
+        else:
+            f_name = '{}.txt'.format(tbs['artist_name'])
+            file_name = os.path.join(full_path, f_name)
+            with open(file_name, 'w') as fn:
+                fn.write(str(vars))
 
         print()
         print('Saving complete...')
@@ -91,10 +99,18 @@ class Save:
                 'Recording Location': tbs['recording_location'],'Description': tbs['Description'],
                 'Lyrics': tbs['Lyrics']}
 
-        f_name = '{}.json'.format(tbs['Title'])
-        file_name = os.path.join(full_path, f_name)
-        with open(file_name, 'w') as fn:
-            json.dump(vars, fn)
+        print('Save to json(1) or txt(2)')
+        typee = input('1/2: ')
+        if typee == '1':
+            f_name = '{}.json'.format(tbs['Title'])
+            file_name = os.path.join(full_path, f_name)
+            with open(file_name, 'w') as fn:
+                json.dump(vars, fn)
+        else:
+            f_name = '{}.txt'.format(tbs['Title'])
+            file_name = os.path.join(full_path, f_name)
+            with open(file_name, 'w') as fn:
+                fn.write(str(vars))
 
         print()
         print('Saving complete...')
