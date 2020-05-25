@@ -51,10 +51,10 @@ class Webpage:
         Returns
             - tuple: contains dictionary with title as keys and links as values
         """
+        print('Getting Articles...')
         response = self.get_page(self.url)
         if not response:
             return None
-        print('Getting Articles...')
         print()
         html = BeautifulSoup(response.text, 'html.parser')
         headline = html.find('div', class_='EditorialPlacement__Title-sc-11ot04a-1 elKqNh').get_text()
@@ -91,6 +91,8 @@ class Webpage:
         article = re.sub(r'[\(\[].*?[\)\]]', '', article)
         return article
         
+    def get_chart(self):
+        pass
 
 
 if __name__ == '__main__':

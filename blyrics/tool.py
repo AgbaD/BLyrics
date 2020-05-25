@@ -51,10 +51,12 @@ class Tool:
         self.start()
 
     def start(self):
+        """A starting point for calling all commands
+        """
         print()
         print("To get latest articles from www.genius.com, press 1")
         print("To get a chart of the top trending songs, press 2")
-        print('To get information about songs and artists, get song lyrics, press #')
+        print('To get information about songs and artists, get song lyrics, press #/3')
         print()
 
         command = input(': ')
@@ -74,9 +76,8 @@ class Tool:
     def get_articles(self):
         """To get news and articles
         
-        Returns:
-            - Title: Article title
-            - Body: Body of article
+        Properties:
+            - Gets article title and link
         """
         print()
         articles_titles = self.web_bot.check_articles()
@@ -99,6 +100,12 @@ class Tool:
         self.print_articles()
 
     def print_articles(self):
+        """For printing article to screen
+
+         Returns:
+            - Title: Article title
+            - Body: Body of article
+        """
         print()
         print('Headline')
         print('1. {}'.format(self.headline))
