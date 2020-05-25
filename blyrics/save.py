@@ -21,7 +21,6 @@ class Save:
         os.chdir(working_dir)
 
     def save_artist(self, tbs):
-        dir_path = self.path
         """For saving information about artist to a file
         
         Properties:
@@ -37,6 +36,7 @@ class Save:
         Returns:
             - str: good or bad save (not saved)
         """
+        dir_path = self.path
         full_path = os.path.join(dir_path, self.dir_name)
         if os.path.exists(full_path):
             pass
@@ -57,7 +57,8 @@ class Save:
                 'Instagram': tbs['Instagram Handle'],'Image Url': tbs['image_url'],
                 'Songs': songs}
         
-        file_name = '{}.json'.format(tbs['artist_name'])
+        f_name = '{}.json'.format(tbs['artist_name'])
+        file_name = os.path.join(full_path, f_name)
         with open(file_name, 'w') as fn:
             json.dump(vars, fn)
 
@@ -65,7 +66,6 @@ class Save:
         print('Saving complete...')
 
     def save_song(self, tbs):
-        dir_path = self.path
         """For saving information about song and song lyrics
         
         Properties:
@@ -80,6 +80,7 @@ class Save:
         Returns:
             - str: good or bad save (not saved)
         """
+        dir_path = self.path
         full_path = os.path.join(dir_path, self.dir_name)
         if os.path.exists(full_path):
             pass
@@ -90,7 +91,8 @@ class Save:
                 'Recording Location': tbs['recording_location'],'Description': tbs['Description'],
                 'Lyrics': tbs['Lyrics']}
 
-        file_name = '{}.json'.format(tbs['Title'])
+        f_name = '{}.json'.format(tbs['Title'])
+        file_name = os.path.join(full_path, f_name)
         with open(file_name, 'w') as fn:
             json.dump(vars, fn)
 

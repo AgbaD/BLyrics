@@ -17,14 +17,20 @@ class Script:
         Methods:
             - start: to start the main script
             - get_articles: to retrieve articles from the genius web page
+            - print_articles: for printing articles to screen
             - get_Searching: to initiate the searching module
             - get_chart: to retrieve a chart of the top 10 songs
         """
         banner = Figlet(font='standard')
         print(banner.renderText("BLyrics"))
 
-        self.search_bot = Search_Genius() # i have to make objects for each class
-        # and self embeed the positionsl arguments
+        # i have to make objects for each class
+        # the script isn't working without ding it like this
+        self.search_bot = Search_Genius() 
+        self.interact_bot = Interact()
+        self.save_bot = Save()
+        self.web_bot = Webpage()
+        # and add positional arguments
 
         print()
         print("Welcome To BLyrics")
@@ -51,7 +57,7 @@ class Script:
         print()
 
         command = input(': ')
-        if command == 1:
+        if command == '1':
             self.get_articles()
         elif command == '2':
             self.get_chart()
@@ -71,8 +77,43 @@ class Script:
             - Body: Body of article
         """
         print()
-        print('Articles')
-        # call get articles module
+        articles_titles = self.web_bot.check_articles()
+        if not articles_titles:
+            print('Service Timeout. Please Retry!')
+            self.start()
+            return
+        # (headline_d, other_news_d)
+        headline_d = articles_titles[0]
+        for k,v in headline_d.items():
+            self.headline = k
+            self.headline_link = v
+        other_news_d = articles_titles[1]
+        self.other_news_title = []
+        self.other_news_link = []
+        for k,v in other_news_d.items():
+            self.other_news_title.append(k)
+            self.other_news_link.append(v)
+        self.print_articles()
+
+    def print_articles(self):
+        print()
+        print('Headline')
+        print('1. {}'.format(self.headline))
+        print()
+        print('Other News')
+        pos = 2
+        for i in self.other_news_title:
+            print('{}. {}'.format(pos, i))
+            pos += 1
+        print()
+        print('Enter article number to read')
+        numb = input(': ')
+        if numb == 'back' or numb == 'menu':
+            self.start()
+            return
+        if numb == '1':
+            self.web_bot    # get article
+        
 
     def get_chart(self):
         pass
@@ -190,7 +231,7 @@ class Script:
                 self.start()
                 return
             if an == 'y':
-                referents = Interact.get_referents(song_id = song_id)
+                referents = self.interact_bot.get_referents(song_id = song_id)
                 num = len(referents)
                 annotations = {}
                 for i in range(num):
@@ -228,9 +269,9 @@ class Script:
         sv = input('y/n: ').lower()
         if sv == 'y':
             if command == '1':
-                Save.save_artist(response)
+                self.save_bot.save_artist(tbs = response)
             else:
-                Save.save_song(response)
+                self.save_bot.save_song(tbs = response)
             print('File saved to BLyrics_Files directory')
         else:
             self.start()

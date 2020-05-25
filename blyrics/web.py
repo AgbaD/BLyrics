@@ -14,20 +14,27 @@ class Webpage:
         Methods:
             - get_page: get the genius home page
             - check_articles: get top 5 articles(names and links)
-            - get article: get the complete article based on the link
+            - get_article: get the complete article based on the link
             - get_chart: get top 10 songs and artist name
         """
 
         self.access_token = 'pX_ZcyoBxAKt8Z2F9oCOASPTzspv9er17wWCAPNIwIWcr5Lg_AyMRgGsx846LVAE'
         self.url = 'https://genius.com'
 
-    def get_page(self):
+    def get_page(self, url):
+        """For retriving a page
+
+        Params:
+            - url: url of page to be retrieved
+        Returns:
+            - response: response from request.get(url)
+        """
         headers = {'User-Agent': 'https://github.com/BlankGodd/Blyrics',
                     'application': 'BLyrics'}
         i = 0
         while i < 3: # try reconnecting 2 times if status_Code != 200
             try:
-                response = requests.get(self.url, headers=headers)
+                response = requests.get(url, headers=headers)
                 if response.status_code == 200:
                     return response
             except:
@@ -39,7 +46,12 @@ class Webpage:
         return None
 
     def check_articles(self):
-        response = self.get_page()
+        """For scrapping article title and links
+        
+        Returns
+            - tuple: contains dictionary with title as keys and links as values
+        """
+        response = self.get_page(self.url)
         if not response:
             return None
         print('Getting Articles...')
@@ -57,6 +69,9 @@ class Webpage:
             other_news.append(val.text)
         for val in other_links_raw:
             other_links.append(val['href'])
+        print()
+        print('Request Successful...')
+        print()
 
         headline_d = {headline:headline_link}
         other_news_d = {}
@@ -64,8 +79,15 @@ class Webpage:
             other_news_d[other_news[i]] = other_links[i]
 
         articles = (headline_d, other_news_d)
-        return articles
 
+        return articles
+    
+    def get_article(self, article_link):
+        article = self.get_page(article_link)
+        if not article:
+            return None
+        html = BeautifulSoup(article.text, 'html.parser')
+        
 
 
 if __name__ == '__main__':
