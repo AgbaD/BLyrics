@@ -17,7 +17,7 @@ class Webpage:
             - get article: get the complete article based on the link
             - get_chart: get top 10 songs and artist name
         """
-        
+
         self.access_token = 'pX_ZcyoBxAKt8Z2F9oCOASPTzspv9er17wWCAPNIwIWcr5Lg_AyMRgGsx846LVAE'
         self.url = 'https://genius.com'
 
@@ -42,29 +42,35 @@ class Webpage:
         response = self.get_page()
         if not response:
             return None
+        print('Getting Articles...')
+        print()
         html = BeautifulSoup(response.text, 'html.parser')
         headline = html.find('div', class_='EditorialPlacement__Title-sc-11ot04a-1 elKqNh').get_text()
         link =  html.find('a', class_= 'EditorialPlacement__Link-sc-11ot04a-2 bCpoMC')
         headline_link = link['href']
-        print(headline)
-        print(headline_link)
-        print()
+        
         other_news_raw = html.find_all('div', class_='EditorialPlacement__Title-sc-11ot04a-1 ABTJt')
-        other_links_raw = html.find('a', class_= 'ditorialPlacement__Title-sc-11ot04a-2 hyRook')
+        other_links_raw = html.find_all('a', class_="EditorialPlacement__Link-sc-11ot04a-2 hyRooK")
         other_news = []
         other_links = []
         for val in other_news_raw:
             other_news.append(val.text)
         for val in other_links_raw:
             other_links.append(val['href'])
-        print(other_news)
-        print(other_links)
+
+        headline_d = {headline:headline_link}
+        other_news_d = {}
+        for i in range(len(other_links)):
+            other_news_d[other_news[i]] = other_links[i]
+
+        articles = (headline_d, other_news_d)
+        return articles
 
 
 
 if __name__ == '__main__':
     w = Webpage()
-    w.check_articles()
+    a = w.check_articles()
 
 
 

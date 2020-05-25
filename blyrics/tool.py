@@ -5,7 +5,7 @@ from pyfiglet import Figlet
 from search import Search_Genius
 from interact import Interact
 from save import Save
-from web import Web
+from web import Webpage
 import time, os
 
 
@@ -223,7 +223,7 @@ class Script:
 
         print()
         print('Would you like to save information to file')
-        sv = input('y/n: ').lower:
+        sv = input('y/n: ').lower()
         if sv == 'y':
             if command == '1':
                 Save.save_artist(response)
@@ -234,7 +234,6 @@ class Script:
             self.start()
         
         
-        
-
-
+if __name__ == '__main__':
+    Script()        
 
