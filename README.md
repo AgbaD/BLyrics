@@ -4,7 +4,8 @@ Building still under construction
 Please do **NOT** enter yet! 
 ```
 A CLI tool for interacting with Genius
-Leveraging the Genius api 
+
+Leveraging the Genius api with python
 
 ## Screeenshots
 - 
