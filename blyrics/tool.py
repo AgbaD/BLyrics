@@ -23,6 +23,8 @@ class Script:
         banner = Figlet(font='standard')
         print(banner.renderText("BLyrics"))
 
+        self.search_bot = Search_Genius() # i have to make objects for each class
+        # and self embeed the positionsl arguments
 
         print()
         print("Welcome To BLyrics")
@@ -114,7 +116,7 @@ class Script:
             if search_str == 'back' or search_str == 'menu':
                 self.start()
                 return
-            response = Search_Genius.search_artist(search_str)
+            response = self.search_bot.search_artist(search_str = search_str)
         elif command == '2':
             while search_str == '':
                 print("Please enter valid input!")
@@ -122,7 +124,7 @@ class Script:
             if search_str == 'back' or search_str == 'menu':
                 self.start()
                 return
-            response = Search_Genius.search_song(search_str)
+            response = self.search_bot.search_song(search_str = search_str)
         else:
             print('Invalid input!')
             self.get_searching()
