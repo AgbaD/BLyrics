@@ -19,7 +19,7 @@ Leveraging the Genius api with python
    - Annotations :pen:
 
 2. Saving prefrences :zap:
-   - Artist Info :sunglassesL
+   - Artist Info :sunglasses:
    - Song info and lyrics :memo:
    
 3. Latest information and articles :dizzy:
@@ -37,7 +37,7 @@ $ git clone 'https://github.com/BlankGodd/BLyrics.git'
 
 $ cd BLyrics
 ```
-2. Setup virtual enviro
+2. Setup virtual enviroment
 
 3. Install the dependencies
 ```sh
@@ -51,7 +51,7 @@ $ python3 main.py
 
 ## Note
 - kindly share with friends :smiley:
-- Thank you for using :simple_smile:
+- Thank you for using :smile:
 - If there is any problem, you can open an issue :grey_question:
 - Leave us a star :star:
 
