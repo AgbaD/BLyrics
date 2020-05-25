@@ -69,6 +69,7 @@ class Tool:
         else:
             print("Invalid input")
             self.start()
+        self.start()
         
     def get_articles(self):
         """To get news and articles
@@ -113,9 +114,39 @@ class Tool:
         if numb == 'back' or numb == 'menu':
             self.start()
             return
+        print('Getting Article...')
+        article = ''
+        article_title = ''
         if numb == '1':
-            self.web_bot    # get article
-        
+            url = self.headline_link
+            article = self.web_bot.get_article(url)
+            if not article:
+                print('Could not retrieve article. Please Retry')
+                self.get_articles()
+                return
+            article_title = self.headline
+        else:
+            ind = int(numb)-2
+            url = self.other_news_link[ind]
+            article = self.web_bot.get_article(url)
+            if not article:
+                print('Could not retrieve article. Please Retry')
+                self.get_articles()
+                return
+            article_title = self.other_news_title[ind]
+
+        print()
+        print('Title: {}'.format(article_title))
+        print()
+        print('Article: \n{}'.format(article))
+        print()
+        print()
+        print('Read other articles or exit to menu')
+        move = input('Read more(r) or exit (e): ')
+        if move == 'r':
+            self.print_articles()
+            return
+        self.start()
 
     def get_chart(self):
         pass

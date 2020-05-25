@@ -78,7 +78,10 @@ class Search_Genius:
 
         print()
         print('If preferred song not in list, search artist name')
-        rank = int(input('Pick the number for intended song:\n'))
+        try:
+            rank = int(input('Pick the number for intended song:\n'))
+        except:
+            return None
         print()
         ranked_song = songs[rank-1]
         print(ranked_song[0], 'by', ranked_song[2])

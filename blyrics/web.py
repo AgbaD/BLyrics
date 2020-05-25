@@ -87,12 +87,15 @@ class Webpage:
         if not article:
             return None
         html = BeautifulSoup(article.text, 'html.parser')
+        article = html.find('div', class_="article_rich_text_formatting").get_text()
+        article = re.sub(r'[\(\[].*?[\)\]]', '', article)
+        return article
         
 
 
 if __name__ == '__main__':
     w = Webpage()
-    a = w.check_articles()
+    w.get_article('https://genius.com/a/why-aaliyah-s-age-aint-nothing-but-a-number-is-her-only-album-on-streaming-services')
 
 
 
