@@ -9,7 +9,7 @@ from web import Webpage
 import time, os
 
 
-class Script:
+class Tool:
     """For using BLyrics as a script instead of a module"""
     def __init__(self):
         """Constructor for Script class
@@ -51,8 +51,9 @@ class Script:
         self.start()
 
     def start(self):
+        print()
         print("To get latest articles from www.genius.com, press 1")
-        print("To get the chart of the top trending songs, press 2")
+        print("To get a chart of the top trending songs, press 2")
         print('To get information about songs and artists, get song lyrics, press #')
         print()
 
@@ -80,6 +81,7 @@ class Script:
         articles_titles = self.web_bot.check_articles()
         if not articles_titles:
             print('Service Timeout. Please Retry!')
+            print()
             self.start()
             return
         # (headline_d, other_news_d)
@@ -273,10 +275,9 @@ class Script:
             else:
                 self.save_bot.save_song(tbs = response)
             print('File saved to BLyrics_Files directory')
-        else:
-            self.start()
+        self.start()
         
         
 if __name__ == '__main__':
-    Script()        
+    Tool()        
 

@@ -163,6 +163,8 @@ class Search_Genius:
             - Information about artist
         """
         artist_ = self.search(search_str)
+        if not artist_:
+            return None
         artist = json.loads(artist_)
         
         num = len(artist['response']['hits'])
@@ -216,7 +218,7 @@ class Search_Genius:
         instagram_name = information['response']['artist']['instagram_name']
         description = information['response']['artist']['description']['plain']
         image_url = information['response']['artist']['image_url']
-        akas = ','.join(aka)
+        akas = ', '.join(aka)
 
         # dictionary id : song title
         artist_songs = self.search_artist_song(artist_id)
@@ -262,6 +264,7 @@ class Search_Genius:
                 if response.status_code == 200:
                     print('Request successful...')
                     print()
+                    break
             except:
                 pass
             i += 1
