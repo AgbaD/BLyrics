@@ -16,7 +16,6 @@ class Webpage:
             - check_articles: get top 5 articles(names and links)
             - get_article: get the complete article based on the link
             - get_charts: get top 10 songs and artist name
-            - more_articles: get more articles
         """
 
         self.access_token = 'pX_ZcyoBxAKt8Z2F9oCOASPTzspv9er17wWCAPNIwIWcr5Lg_AyMRgGsx846LVAE'
@@ -91,7 +90,7 @@ class Webpage:
         article = html.find('div', class_="article_rich_text_formatting").get_text()
         article = re.sub(r'[\(\[].*?[\)\]]', '', article)
         return article
-        
+       
     def get_charts(self):
         print()
         print('Getting Chart...')
@@ -115,18 +114,12 @@ class Webpage:
         print('Request Successful...')
         
         return ranks, song_titles, artists
-        
-
 
 
 if __name__ == '__main__':
     w = Webpage()
-    x = w.get_charts()
-    num = len(x[0])
-    print('CHARTS')
-    for i in range(num):
-        print()
-        print(x[0][i],'     ',x[1][i],'     ',x[2][i])
+    x = w.more_articles(0)
+    print(x)
 
 
 

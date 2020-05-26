@@ -68,7 +68,6 @@ $ python3 blyrics.py
 - [X] as script (tool.py)
 - [X] interact.py for getting referents and annotations
 - [X] web.py general genius web info
-- [ ] get more articles
 - [X] save.py for saving prefrences(lyrics and song info, artist_info)
 - [X] requests should retry about 3 times of it encounters an error
 
