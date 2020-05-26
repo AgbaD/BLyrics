@@ -1,7 +1,7 @@
 # BLyrics :notes: 
 ```
 Building still under construction 
-You can entr now!
+You can enter now!
 But don't move anything yet 
 ```
 A CLI tool for interacting with Genius
@@ -48,7 +48,7 @@ $ pip3 install blyrics
 ```py
 >>>from blyrics import Package
 >>>song_info = Package.search_song('No role Models')
->>>artist_info = Package.searh_artist('Cole')
+>>>artist_info = Package.search_artist('Cole')
 ```
 
 ### As script
@@ -80,7 +80,7 @@ $ pip3 install -r requirements.txt
 - If there is any problem, you can open an issue :grey_question:
 - Leave us a star :star:
 
-## Contributors
+## Contributor(s)
 **@BlankGodd**
 
 
