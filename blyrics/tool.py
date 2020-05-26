@@ -55,7 +55,7 @@ class Tool:
         """A starting point for calling all commands
         """
         print()
-        print("To get latest articles from www.genius.com, press 1")
+        print("To get latest articles from Genius home page, press 1")
         print("To get a chart of the top songs, press 2")
         print('To get information about songs and artists, get song lyrics, press #/3')
         print()
