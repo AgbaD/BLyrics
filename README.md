@@ -69,7 +69,7 @@ $ pip3 install -r requirements.txt
      ```sh
      $ python blyrics\blyrics.py
      ```
-   - Unix 
+   - Unix or Linux
      ```sh
      $ python3 blyrics/blyrics.py
      ```
