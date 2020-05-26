@@ -83,6 +83,13 @@ class Webpage:
         return articles
     
     def get_article(self, article_link):
+        """For getting articles content
+        
+        Params:
+            - article_link: link to article page
+        Returns:
+            - str: article content
+        """
         article = self.get_page(article_link)
         if not article:
             return None
@@ -92,6 +99,11 @@ class Webpage:
         return article
        
     def get_charts(self):
+        """For getting chart of trending songs
+
+        Returns:
+            - tuple: ranks, song title and artist name
+        """
         print()
         print('Getting Chart...')
         page = self.get_page(self.url)
@@ -116,10 +128,7 @@ class Webpage:
         return ranks, song_titles, artists
 
 
-if __name__ == '__main__':
-    w = Webpage()
-    x = w.more_articles(0)
-    print(x)
+
 
 
 

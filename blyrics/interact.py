@@ -18,7 +18,7 @@ class Interact:
             - get_referents: for getting referents and annotations 
                 Params:
                     - song_id
-                    -creator_id
+                    - creator_id
         """
 
         self.access_token = 'pX_ZcyoBxAKt8Z2F9oCOASPTzspv9er17wWCAPNIwIWcr5Lg_AyMRgGsx846LVAE'
@@ -26,6 +26,16 @@ class Interact:
 
     def get_referents(self, song_id = None, webpage_id = None,
                         creator_id = None):
+        """For getting referents and annotations to a song
+        
+        Params:
+            - song_id = None
+            - creator_id = None
+            ('Must provide song or creator id BUT not both)
+
+        Returns:
+            - list: list containing tuples of referents, annotations and other information
+        """
         path = 'referents?'
         request_url = '/'.join([self.root, path])
 
@@ -74,8 +84,5 @@ class Interact:
         return referents_total
 
 
-if __name__ == '__main__':
-    b = Interact()
-    b.upvote_annotation(':8088450')
     
 

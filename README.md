@@ -79,20 +79,6 @@ $ python3 blyrics.py
 - If there is any problem, you can open an issue :grey_question:
 - Leave us a star :star:
 
-### Tasks
-- [X] search.py for searching on the api
-- [ ] as module (blyrics.py)
-- [X] as script (tool.py)
-- [X] interact.py for getting referents and annotations
-- [X] web.py general genius web info
-- [X] save.py for saving prefrences(lyrics and song info, artist_info)
-- [X] requests should retry about 3 times of it encounters an error
-
-#### Later versioins (if)
-- [ ] autentication . account_info and entry page
-- [ ] create annotation, voting has issues (issue with authentication and scope)
-
-
 ## Contributors
 **@BlankGodd**
 

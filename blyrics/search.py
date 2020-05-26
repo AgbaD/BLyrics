@@ -25,6 +25,13 @@ class Search_Genius:
         self.root = 'https://api.genius.com'
 
     def search(self, search_str):
+        """To make a general query with the api
+        
+        Params:
+            - search_str: value to be searched
+        Returns:
+            - response object
+        """
         path = 'search/'
         request_url = '/'.join([self.root,path])
         print()
@@ -286,9 +293,5 @@ class Search_Genius:
         return final
         
 
-
-if __name__ == '__main__':
-    b = Search_Genius()
-    d = b.search_song('Fire Squad')
     
 

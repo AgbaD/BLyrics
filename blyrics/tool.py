@@ -192,6 +192,11 @@ class Tool:
         print('Check lyrics or information for top songs and artists now')
 
     def space_cre(self, n):
+        """For creating gaps in tables(charts)
+        
+        Params:
+            - n: number of spaces to be created/returned
+        """
         for i in range(n):
             return ' ' * n
 
@@ -357,7 +362,5 @@ class Tool:
             print('File saved to BLyrics_Files directory')
         self.start()
         
-        
-if __name__ == '__main__':
-    Tool()        
+              
 
