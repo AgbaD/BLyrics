@@ -35,6 +35,23 @@ Leveraging the Genius api with python
 4. An open mind
 
 ## Usage
+### As Module
+1. Read [Documentation]()
+
+2. [Setup virtual enviroment](https://realpython.com/python-virtual-environments-a-primer/)
+
+3. Install from pypi
+```sh
+$ pip3 install blyrics
+```
+4. import module
+```py
+>>>from blyrics import Package
+>>>song_info = Package.search_song('No role Models')
+>>>artist_info = Package.searh_artist('Cole')
+```
+
+### As script
 1. Clone the repository
 ```sh
 $ git clone https://github.com/BlankGodd/BLyrics.git
