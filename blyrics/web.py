@@ -15,7 +15,7 @@ class Webpage:
             - get_page: get the genius home page
             - check_articles: get top 5 articles(names and links)
             - get_article: get the complete article based on the link
-            - get_chart: get top 10 songs and artist name
+            - get_charts: get top 10 songs and artist name
         """
 
         self.access_token = 'pX_ZcyoBxAKt8Z2F9oCOASPTzspv9er17wWCAPNIwIWcr5Lg_AyMRgGsx846LVAE'
@@ -91,8 +91,13 @@ class Webpage:
         article = re.sub(r'[\(\[].*?[\)\]]', '', article)
         return article
         
-    def get_chart(self):
-        pass
+    def get_charts(self):
+        print()
+        page = self.get_page(self.url)
+        if not page:
+            return None
+        html = BeautifulSoup(page.text, 'html.parser')
+        
 
 
 if __name__ == '__main__':

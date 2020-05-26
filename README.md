@@ -50,7 +50,7 @@ $ cd blyrics
 ```
 5. Run script 
 ```sh
-$ python3 main.py
+$ python3 blyrics.py
 ```
 
 ## Note

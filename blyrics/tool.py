@@ -149,14 +149,16 @@ class Tool:
         print()
         print()
         print('Read other articles or exit to menu')
-        move = input('Read more(r) or exit (e): ')
+        move = input('Read more(r) or exit (e): ').lower()
         if move == 'r':
             self.print_articles()
             return
         self.start()
 
     def get_chart(self):
-        pass
+        """For getting a chart of the top songs"""
+        print()
+        chart = self.web_bot.get_charts()
 
     def get_searching(self):
         """To starting searching
@@ -271,36 +273,41 @@ class Tool:
                 self.start()
                 return
             if an == 'y':
-                referents = self.interact_bot.get_referents(song_id = song_id)
-                num = len(referents)
-                annotations = {}
-                for i in range(num):
-                    annotator_name = referents[i][0]
-                    fragment = referents[i][3]
-                    annotation = referents[i][5]
-                    ls = (annotator_name, fragment, annotation)
-                    annotations[i+1] = ls
-                print()
-                print('There are {} annotations for the track'.format(num))
-                print('1: View all annotations')
-                print('2: Cancel')
-                commandd = input(': ')
-                if commandd == '1':
-                    for k,v in annotations.items():
-                        print()
-                        print('---------------------------------------------------------------------------------')
-                        print(k)
-                        print('Annotator: {}'.format(v[0]))
-                        print()
-                        print('Highlight: \n{}'.format(v[1]))
-                        print()
-                        print('Annotations/Notes \n{}'.format(v[2]))
-                        print('---------------------------------------------------------------------------------')
-                elif commandd == 'back' or commandd == 'menu':
-                    self.start()
-                    return
-                else:
-                    pass
+                while True:
+                    referents = self.interact_bot.get_referents(song_id = song_id)
+                    if not referents:
+                        print('Could not get referents')
+                        break
+                    num = len(referents)
+                    annotations = {}
+                    for i in range(num):
+                        annotator_name = referents[i][0]
+                        fragment = referents[i][3]
+                        annotation = referents[i][5]
+                        ls = (annotator_name, fragment, annotation)
+                        annotations[i+1] = ls
+                    print()
+                    print('There are {} annotations for the track'.format(num))
+                    print('1: View all annotations')
+                    print('2: Cancel')
+                    commandd = input(': ')
+                    if commandd == '1':
+                        for k,v in annotations.items():
+                            print()
+                            print('---------------------------------------------------------------------------------')
+                            print(k)
+                            print('Annotator: {}'.format(v[0]))
+                            print()
+                            print('Highlight: \n{}'.format(v[1]))
+                            print()
+                            print('Annotations/Notes \n{}'.format(v[2]))
+                            print('---------------------------------------------------------------------------------')
+                    elif commandd == 'back' or commandd == 'menu':
+                        self.start()
+                        return
+                    else:
+                        pass
+                    break
             else:
                 pass
 
