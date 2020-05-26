@@ -64,14 +64,15 @@ $ cd BLyrics
 ```sh
 $ pip3 install -r requirements.txt
 ```
-4. Move into scripts directory
-```sh
-$ cd blyrics
-```
-5. Run script 
-```sh
-$ python3 blyrics.py
-```
+4. Run script
+   - Windows OS
+     ```sh
+     $ python blyrics\blyrics.py
+     ```
+   - Unix 
+     ```sh
+     $ python3 blyrics/blyrics.py
+     ```
 
 ## Note
 - kindly share with friends :smiley:
