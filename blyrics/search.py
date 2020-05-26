@@ -119,8 +119,9 @@ class Search_Genius:
             'User-Agent':'https://github.com/BlankGodd/BLyrics'}
         lyrics = None
         page_title = ''
-        i,j = 0,0
+        i = 0
         while i < 5:
+            j = 0
             while j < 3:
                 try:
                     response2 = requests.get(url, headers=headers_)

@@ -16,6 +16,7 @@ class Webpage:
             - check_articles: get top 5 articles(names and links)
             - get_article: get the complete article based on the link
             - get_charts: get top 10 songs and artist name
+            - more_articles: get more articles
         """
 
         self.access_token = 'pX_ZcyoBxAKt8Z2F9oCOASPTzspv9er17wWCAPNIwIWcr5Lg_AyMRgGsx846LVAE'
@@ -93,17 +94,39 @@ class Webpage:
         
     def get_charts(self):
         print()
+        print('Getting Chart...')
         page = self.get_page(self.url)
         if not page:
             return None
         html = BeautifulSoup(page.text, 'html.parser')
+        ranks_raw = html.find_all('div', class_="ChartItemdesktop__Rank-sc-3bmioe-1 tDViA")
+        titles_raw = html.find_all('div', class_='ChartSongdesktop__Title-sc-18658hh-3 fODYHn')
+        artists_raw = html.find_all('h4', class_='ChartSongdesktop__Artist-sc-18658hh-5 kiggdb')
+        ranks = []
+        song_titles = []
+        artists = []
+        for val in ranks_raw:
+            ranks.append(val.text)
+        for val in titles_raw:
+            song_titles.append(val.text)
+        for val in artists_raw:
+            artists.append(val.text)
+        print()
+        print('Request Successful...')
         
+        return ranks, song_titles, artists
+        
+
 
 
 if __name__ == '__main__':
     w = Webpage()
-    w.get_article('https://genius.com/a/why-aaliyah-s-age-aint-nothing-but-a-number-is-her-only-album-on-streaming-services')
-
+    x = w.get_charts()
+    num = len(x[0])
+    print('CHARTS')
+    for i in range(num):
+        print()
+        print(x[0][i],'     ',x[1][i],'     ',x[2][i])
 
 
 

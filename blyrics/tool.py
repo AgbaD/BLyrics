@@ -20,6 +20,7 @@ class Tool:
             - print_articles: for printing articles to screen
             - get_Searching: to initiate the searching module
             - get_chart: to retrieve a chart of the top 10 songs
+            - space_cre: for creating gaps in tables(charts)
         """
         banner = Figlet(font='standard')
         print(banner.renderText("BLyrics"))
@@ -55,7 +56,7 @@ class Tool:
         """
         print()
         print("To get latest articles from www.genius.com, press 1")
-        print("To get a chart of the top trending songs, press 2")
+        print("To get a chart of the top songs, press 2")
         print('To get information about songs and artists, get song lyrics, press #/3')
         print()
 
@@ -156,9 +157,43 @@ class Tool:
         self.start()
 
     def get_chart(self):
-        """For getting a chart of the top songs"""
+        """For getting a chart of the top songs
+        
+        Properties:
+            - Prints a table of top 10 songs and artists
+        """
         print()
         chart = self.web_bot.get_charts()
+        if not chart:
+            print('Could not get Chart. Please Retry!')
+            self.start()
+            return
+        ranks = chart[0]
+        titles = chart[1]
+        artists = chart[2]
+        print()
+        print('             CHARTS')
+        print()
+        print('Rank     Title                                    Artist')
+        space = 0
+        for i in range(len(ranks)):
+            if len(titles[i]) < 30:
+                space = 35 - len(titles[i])
+                print(ranks[i],'     ',titles[i],self.space_cre(space),artists[i])
+            else:
+                tit = ''
+                for j in range(25):
+                    tit += titles[i][j]
+                tit += '...'
+                space = 35 - len(tit)
+                print(ranks[i],'     ',tit,self.space_cre(space),artists[i])
+            space = 0
+        print()
+        print('Check lyrics or information for top songs and artists now')
+
+    def space_cre(self, n):
+        for i in range(n):
+            return ' ' * n
 
     def get_searching(self):
         """To starting searching

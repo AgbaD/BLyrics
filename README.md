@@ -24,6 +24,9 @@ Leveraging the Genius api with python
    - Song info and lyrics :memo:
    
 3. Latest information and articles :dizzy:
+   - Headliner from genius.com
+   - Oher articles
+   - Charts
 
 ## Requirements
 1. Python3 
@@ -38,7 +41,7 @@ $ git clone https://github.com/BlankGodd/BLyrics.git
 
 $ cd BLyrics
 ```
-2. Setup virtual enviroment
+2. [Setup virtual enviroment](https://realpython.com/python-virtual-environments-a-primer/)
 
 3. Install the dependencies
 ```sh
@@ -61,11 +64,11 @@ $ python3 blyrics.py
 
 ### Tasks
 - [X] search.py for searching on the api
-- [ ] main.py for user in
 - [ ] as module (blyrics.py)
-- [ ] as script (tool.py)
+- [X] as script (tool.py)
 - [X] interact.py for getting referents and annotations
-- [ ] web.py general genius web info
+- [X] web.py general genius web info
+- [ ] get more articles
 - [X] save.py for saving prefrences(lyrics and song info, artist_info)
 - [X] requests should retry about 3 times of it encounters an error
 
