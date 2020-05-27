@@ -8,7 +8,7 @@ with open('README.md', 'r') as ld:
 
 setup(
     name="blyrics",
-    version="0.0.3",
+    version="1",
     author="Damilare Agbabiaka (BlankGodd)",
     author_email="blankgodd33@gmail.com",
     description="Python client for the GENIUS API - "
@@ -19,7 +19,6 @@ setup(
     py_modules=["blyrics","interact","save","search","tool","web"],
     package_dir = {"":"blyrics"},
     install_requires=[
-        "wget~=3.2",
         "requests~=2.21.0",
         "pyfiglet~=0.8.post1",
         "beautifulsoup4~=4.9.0",
