@@ -7,17 +7,17 @@ with open('README.md', 'r') as ld:
     long_description = ld.read()
 
 setup(
-    name='blyrics',
-    version='0.0.3',
-    author='Damilare Agbabiaka (BlankGodd)',
-    author_email='blankgodd33@gmail.com',
-    description='Python client for the GENIUS API - '
-                  'Also for getting latest articles and charts',
+    name="blyrics",
+    version="0.0.3",
+    author="Damilare Agbabiaka (BlankGodd)",
+    author_email="blankgodd33@gmail.com",
+    description="Python client for the GENIUS API - "
+                  "Also for getting latest articles and charts",
     long_description=long_description,
-    long_description_content_type='text/markdown',
-    url='https://github.com/BlankGodd/BLyrics'
-    py_modules=['blyrics','interact','save','search','tool','web'],
-    package_dir = {'':'blyrics'},
+    long_description_content_type="text/markdown",
+    url="https://github.com/BlankGodd/BLyrics"
+    py_modules=["blyrics","interact","save","search","tool","web"],
+    package_dir = {"":"blyrics"},
     install_requires=[
         "wget~=3.2",
         "requests~=2.21.0",
@@ -37,13 +37,17 @@ setup(
         "Operating System :: OS Independent",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Utilities",
+        "Topic :: Lyrics",
+        "Topic :: Music",
         "Topic :: Internet",
-        "Topic :: Multimedia :: Video"
+        "Topic :: Multimedia :: Audio",
+        "Topic :: Social"
     ],  
     python_requires='>=3.6',
     project_urls={
         "Bug Reports": "https://github.com/BlankGodd/BLyrics/issues",
         "Read the Docs": "https://blyrics.readthedocs.io/en/latest/",
     },
-
+    keywords=["music", "lyrics", "mp3", "music charts", "entertainment",
+             "genius", "articles"],
 )

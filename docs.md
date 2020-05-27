@@ -1,0 +1,181 @@
+# BLyrics :notes: 
+BLyrics is a python
+
+A CLI tool for interacting with Genius
+
+Leveraging the Genius api with python
+
+## Package functions include
+1. Getting infomation :ok_hand:
+   - Songs :sound:
+   - Artists :sunglasses:
+   - Lyrics :memo:
+   - Annotations :pen:
+
+2. Saving prefrences :zap:
+   - Artist Info :sunglasses:
+   - Song info and lyrics :memo:
+   
+3. Latest information and articles :dizzy:
+   - Headliner from genius.com
+   - Oher articles
+   - Charts
+
+## Requirements
+1. Python3 
+2. Any Operating system
+3. [Requirements](requirements.txt)
+4. An open mind
+
+## Usage
+### As Module
+1. Read [Documentation]()
+
+2. [Setup virtual enviroment](https://realpython.com/python-virtual-environments-a-primer/)
+
+3. Install from pypi
+```sh
+$ pip3 install blyrics
+```
+4. import module
+```py
+>>>from blyrics import Package
+>>># Get song info and lyrics
+>>>song_info = Package.search_song('No role Models')
+>>>
+>>># Get artist information
+>>>artist_info = Package.search_artist('Cole')
+```
+
+### As script
+1. Clone the repository
+```sh
+$ git clone https://github.com/BlankGodd/BLyrics.git
+
+$ cd BLyrics
+```
+2. [Setup virtual enviroment](https://realpython.com/python-virtual-environments-a-primer/)
+
+3. Install the dependencies
+```sh
+$ pip3 install -r requirements.txt
+```
+4. Run script
+   - Windows OS
+     ```sh
+     $ python blyrics\blyrics.py
+     ```
+   - Unix or Linux
+     ```sh
+     $ python3 blyrics/blyrics.py
+     ```
+
+## Functions
+#### search_song(song)
+For getting song info and lyrics
+- Params:
+  - song: song title
+- Returns:
+  - dict: a dictionary of song information and lyrics
+
+##### Usage:
+```py
+>>>song_info = Package.search_song('No Role Modelz')
+>>>song_lyrics = song_info['Lyrics']
+>>>print(song_lyrics)
+```
+
+#### save_song(song_info)
+For saving song info
+- Params:
+  - song_info: value returned by search_song
+
+```py
+>>>Package.save_song(song_info)
+Saving Complete...
+>>>
+```
+
+#### search_artist(artist)
+For getting artist info 
+- Params:
+  - artist: artist name
+- Returns:
+  - dict: a dictionary of artist information
+
+##### Usage
+```py
+>>>artist_info = Package.search_artist('Cole')
+>>>twitter = artist_info['Twitter Handle']
+>>>print(twitter)
+```
+
+#### save_artist(artist_info)
+For saving artist info
+- Params:
+  - artist_info: value returned by search_artist
+
+```py
+>>>Package.save_artist(artist_info)
+Saving Complete...
+>>>
+```
+
+#### get_annotations(song_id)
+For getting song annotations
+- Params:
+  - song_id: song id gotten from search_song
+- Returns:
+  - annotations: list of annotations and other important information
+    
+##### Usage
+```py
+>>>song_id = song_info['song_id']
+>>>annotations = Package.get_annotations(song_id)
+```
+
+#### get_articles_links():
+For getting links and titles of articles currently on the genius home page
+- Returns:
+  - tuple: headliner and other articles
+    
+##### Usage
+```py
+>>>articles = Package.get_articles_links()
+>>>print(aritcles)
+```
+
+#### get_article(link)
+"""For getting an articles currently on the genius home page
+- Params:
+  - link: article link gotten from get_article_links
+- Returns:
+  - str: article content
+
+##### Usage
+```py
+>>>headline = articles[0]
+>>>links = [v for v in headline.values()]
+>>>article = Package.get_article(links[0])
+>>>print(article)
+```
+
+#### get_chart()
+For getting chart of top trending songs
+- Returns:
+  - tuple: ranks, song title and artist name
+
+```py
+>>>chart = Package.get_chart()
+>>>for i in range(len(chart[0])):
+...    print(chart[0][i],'   ',chart[1][i],'  ',chart[2][i])
+```
+
+## Author
+- Name: Damilare Agbabiaka
+- Nick: BlankGodd
+- Email: blankgodd33@gmail.com
+- Github: https://github.com/BlankGodd
+- Twitter: @BlankGodd
+   
+   
