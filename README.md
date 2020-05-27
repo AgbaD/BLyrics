@@ -12,7 +12,7 @@ Leveraging the Genius api with python
 <img src="screenshots/ss1.png" alt="Home page"> 
 
 
-## API functions include
+## API features include
 1. Getting infomation :ok_hand:
    - Songs :sound:
    - Artists :sunglasses:
