@@ -56,6 +56,15 @@ class Save:
                 'Description': tbs['Description'],'Twitter': tbs['Twitter Handle'],
                 'Instagram': tbs['Instagram Handle'],'Image Url': tbs['image_url'],
                 'Songs': songs}
+
+        vars_txt = """
+                \nName: {0}\nAlias: {1}
+                \n\nDescription: {2}\n\nTwitter: {3}
+                \nInstagram: {4}\nImage Url: {5}
+                \n\nSongs: {6}
+        """.format(tbs['artist_name'],tbs['Aliases'],tbs['Description'],
+                    tbs['Twitter Handle'],tbs['Instagram Handle'],
+                    tbs['image_url'],songs)
         
         print('Save to json(1) or txt(2)')
         typee = input('1/2: ')
@@ -68,7 +77,7 @@ class Save:
             f_name = '{}.txt'.format(tbs['artist_name'])
             file_name = os.path.join(full_path, f_name)
             with open(file_name, 'w') as fn:
-                fn.write(str(vars))
+                fn.write(vars_txt)
 
         print()
         print('Saving complete...')
@@ -99,6 +108,12 @@ class Save:
                 'Recording Location': tbs['recording_location'],'Description': tbs['Description'],
                 'Lyrics': tbs['Lyrics']}
 
+        vars_txt = """
+            \nTitle: {0}\nArtist: {1}\n\nRelease Date: {2}\nRecording Location: {3}
+            \n\nDescription: {4}\n\nLyrics: {5}
+        """.format(tbs['Title'],tbs['Artist'],tbs['release_date'],tbs['recording_location'],
+                    tbs['Description'],tbs['Lyrics'])
+
         print('Save to json(1) or txt(2)')
         typee = input('1/2: ')
         if typee == '1':
@@ -110,7 +125,7 @@ class Save:
             f_name = '{}.txt'.format(tbs['Title'])
             file_name = os.path.join(full_path, f_name)
             with open(file_name, 'w') as fn:
-                fn.write(str(vars))
+                fn.write(vars_txt)
 
         print()
         print('Saving complete...')

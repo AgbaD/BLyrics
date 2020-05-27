@@ -9,8 +9,8 @@ A CLI tool for interacting with Genius
 Leveraging the Genius api with python
 
 ## Screeenshots
-- 
-- 
+<img src="screenshots/ss1.png" alt="Home page"> 
+
 
 ## API functions include
 1. Getting infomation :ok_hand:
