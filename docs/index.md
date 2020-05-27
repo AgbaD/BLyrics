@@ -1,22 +1,22 @@
 # BLyrics :notes: 
-BLyrics is a python
+BLyrics is a python client for leveraging the GENIUS API.
 
 A CLI tool for interacting with Genius
 
-Leveraging the Genius api with python
+It is also used for getting latest articles and song charts
 
 ## Package features include
-1. Getting infomation :ok_hand:
-   - Songs :sound:
-   - Artists :sunglasses:
-   - Lyrics :memo:
-   - Annotations :pen:
+1. Getting infomation 
+   - Songs 
+   - Artists 
+   - Lyrics 
+   - Annotations 
 
 2. Saving prefrences :zap:
-   - Artist Info :sunglasses:
-   - Song info and lyrics :memo:
+   - Artist Info
+   - Song info and lyrics
    
-3. Latest information and articles :dizzy:
+3. Latest information and articles
    - Headliner from genius.com
    - Oher articles
    - Charts
@@ -33,16 +33,6 @@ Leveraging the Genius api with python
 2. Install from PyPi
 ```sh
 $ pip3 install blyrics
-```
-## Usage
-import module
-```py
->>>from blyrics import Package
->>># Get song info and lyrics
->>>song_info = Package.search_song('No role Models')
->>>
->>># Get artist information
->>>artist_info = Package.search_artist('Cole')
 ```
 
 ## Functions
