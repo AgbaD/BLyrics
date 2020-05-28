@@ -45,13 +45,13 @@ class Package:
             raise ResponseError('Could not retrieve response')
         return response
 
-    def save_song(self, song):
+    def save_song(self, song_info):
         """For saving song info
         
         Params:
-            - song: value returned by search_song
+            - song_info: value returned by search_song
         """
-        self.save_bot.save_song(tbs=song)
+        self.save_bot.save_song(tbs=song_info)
 
     def search_artist(self, artist):
         """For getting artist info 
@@ -66,13 +66,13 @@ class Package:
             raise ResponseError('Could not retrieve response')
         return response
 
-    def save_artist(self, artist):
+    def save_artist(self, artist_info):
         """For saving artist info
         
         Params:
-            - song: value returned by search_artist
+            - artist_info: value returned by search_artist
         """
-        self.save_bot.save_artist(tbs=artist)
+        self.save_bot.save_artist(tbs=artist_info)
 
     def get_annotations(self, song_id):
         """For getting song annotations

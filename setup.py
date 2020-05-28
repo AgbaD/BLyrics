@@ -8,14 +8,14 @@ with open('README.md', 'r') as ld:
 
 setup(
     name="blyrics",
-    version="1",
+    version="1.1",
     author="Damilare Agbabiaka (BlankGodd)",
     author_email="blankgodd33@gmail.com",
     description="Python client for the GENIUS API - "
                   "Also for getting latest articles and charts",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/BlankGodd/BLyrics"
+    url="https://github.com/BlankGodd/BLyrics",
     py_modules=["blyrics","interact","save","search","tool","web"],
     package_dir = {"":"blyrics"},
     install_requires=[
