@@ -1,4 +1,0 @@
-include *.txt
-include LICENSE
-recursive-include screenshots *.png
-include *.rst
