@@ -45,7 +45,7 @@ setup(
     python_requires='>=3.6',
     project_urls={
         "Bug Reports": "https://github.com/BlankGodd/BLyrics/issues",
-        "Read the Docs": "https://blyrics.readthedocs.io/en/latest/",
+        "Read the Docs": "https://github.com/BlankGodd/BLyrics/wiki",
     },
     keywords=["music", "lyrics", "mp3", "music charts", "entertainment",
              "genius", "articles"],

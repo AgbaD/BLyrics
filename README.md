@@ -36,7 +36,7 @@ Leveraging the Genius api with python
 
 ## Usage
 ### As Module
-1. Read [Documentation]()
+1. Read [Documentation](https://github.com/BlankGodd/BLyrics/wiki)
 
 2. [Setup virtual enviroment](https://realpython.com/python-virtual-environments-a-primer/)
 
