@@ -58,7 +58,7 @@ For getting song info and lyrics
 - Returns:
   - dict: a dictionary of song information and lyrics
 
-##### Usage:
+**Usage:**
 ```py
 >>>song_info = Package.search_song('No Role Modelz')
 >>>song_lyrics = song_info['Lyrics']
@@ -83,7 +83,7 @@ For getting artist info
 - Returns:
   - dict: a dictionary of artist information
 
-##### Usage
+**Usage:**
 ```py
 >>>artist_info = Package.search_artist('Cole')
 >>>twitter = artist_info['Twitter Handle']
@@ -108,7 +108,7 @@ For getting song annotations
 - Returns:
   - annotations: list of annotations and other important information
     
-##### Usage
+**Usage:**
 ```py
 >>>song_id = song_info['song_id']
 >>>annotations = Package.get_annotations(song_id)
@@ -119,7 +119,7 @@ For getting links and titles of articles currently on the genius home page
 - Returns:
   - tuple: headliner and other articles
     
-##### Usage
+**Usage:**
 ```py
 >>>articles = Package.get_articles_links()
 >>>print(aritcles)
@@ -132,7 +132,7 @@ For getting links and titles of articles currently on the genius home page
 - Returns:
   - str: article content
 
-##### Usage
+**Usage:**
 ```py
 >>>headline = articles[0]
 >>>links = [v for v in headline.values()]
