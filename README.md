@@ -47,11 +47,12 @@ $ pip3 install blyrics
 4. import module
 ```py
 >>>from blyrics import Package
+>>>Package = Package()
 >>># Get song info and lyrics
->>>song_info = Package.search_song('No role Models')
+>>>song_info = Package.search_song(song='No role Models')
 >>>
 >>># Get artist information
->>>artist_info = Package.search_artist('Cole')
+>>>artist_info = Package.search_artist(artist='Cole')
 ```
 
 ### As script
