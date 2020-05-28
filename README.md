@@ -1,9 +1,5 @@
 # BLyrics :notes: 
-```
-Building still under construction 
-You can enter now!
-But don't move anything yet 
-```
+
 A CLI tool for interacting with Genius
 
 Leveraging the Genius api with python
