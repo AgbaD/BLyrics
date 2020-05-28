@@ -4,6 +4,7 @@ fire_Squad.txt
 *.jpg
 later.py
 tasks.md
+MANIFEST.in
 
 
 # Created by https://www.gitignore.io/api/python
