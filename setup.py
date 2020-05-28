@@ -3,16 +3,15 @@
 
 from setuptools import setup
 
-with open('README.md', 'r') as ld:
-    long_description = ld.read()
+with open('description.rst', 'r') as fh:
+    long_description = fh.read()
 
 setup(
     name="blyrics",
     version="1.1",
     author="Damilare Agbabiaka (BlankGodd)",
     author_email="blankgodd33@gmail.com",
-    description="Python client for the GENIUS API - "
-                  "Also for getting latest articles and charts",
+    description="Python client for the GENIUS API -     Also for getting latest articles and charts",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/BlankGodd/BLyrics",
@@ -36,11 +35,12 @@ setup(
         "Operating System :: OS Independent",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Utilities",
-        "Topic :: Lyrics",
-        "Topic :: Music",
+        "Topic :: Artistic Software",
+        "Topic :: Games/Entertainment",
         "Topic :: Internet",
-        "Topic :: Multimedia :: Audio",
-        "Topic :: Social"
+        "Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Content Management System",
+        "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+        "Topic :: Multimedia :: Sound/Audio"
     ],  
     python_requires='>=3.6',
     project_urls={
