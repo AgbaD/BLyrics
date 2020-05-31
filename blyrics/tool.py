@@ -197,8 +197,7 @@ class Tool:
         Params:
             - n: number of spaces to be created/returned
         """
-        for i in range(n):
-            return ' ' * n
+        return ' ' * n
 
     def get_searching(self):
         """To starting searching

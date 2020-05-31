@@ -134,13 +134,11 @@ class Search_Genius:
                     response2 = requests.get(url, headers=headers_)
                     if response2.status_code == 200:
                         print('Request{} successful...'.format(i + 1))
-                        print()
-                        # i need to understand this part     
+                        print()    
                         html = BeautifulSoup(response2.text, 'html.parser')
                         page_title = html.find('title').get_text()
                         lyrics = html.find('div', class_='lyrics').get_text()
                         lyrics = re.sub(r'[\(\[].*?[\)\]]', '', lyrics)
-                        ##################################3
                         break
                 except:
                     pass
@@ -154,7 +152,7 @@ class Search_Genius:
         except:
             description = None
             recording_location = None
-            release_date_for_display = None
+            release_date = None
         final = {'Title' : ranked_song[0], 'Artist' : ranked_song[2], 
             'Description' : description, 'Lyrics' : lyrics, 
             'song_id' : song_id, 'lyrics_url' : ranked_song[4],
@@ -218,7 +216,7 @@ class Search_Genius:
             except:
                 pass
             i += 1
-        if response == None:
+        if not response:
             return response
         information = response.text
         information = json.loads(information)
@@ -279,7 +277,7 @@ class Search_Genius:
             except:
                 pass
             i += 1
-        if response == None:
+        if not response:
             return response
         returned = json.loads(response.text)
 

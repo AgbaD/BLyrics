@@ -62,10 +62,9 @@ class Interact:
             except:
                 pass
             i += 1
-        if response == None:
+        if not response:
             return response
 
-        referents = response.text
         referents = json.loads(response.text)
         
         referents_total = []
