@@ -7,6 +7,7 @@ from interact import Interact
 from save import Save
 from web import Webpage
 import time, os
+import sys
 
 
 class Tool:
@@ -57,7 +58,7 @@ class Tool:
         print()
         print("To get latest articles from Genius home page, press 1")
         print("To get a chart of the top songs, press 2")
-        print('To get information about songs and artists, get song lyrics, press #/3')
+        print('To get information about songs and artists, get song lyrics, press 3')
         print()
 
         command = input(': ')
@@ -69,6 +70,8 @@ class Tool:
             self.get_searching()
         elif command == 'back' or 'command' == 'menu':
             self.start()
+        elif command == '^Z':
+        	sys.exit()
         else:
             print("Invalid input")
             self.start()
@@ -133,6 +136,8 @@ class Tool:
                 self.get_articles()
                 return
             article_title = self.headline
+        elif numb == '^Z':
+        	sys.exit()
         else:
             ind = int(numb)-2
             url = self.other_news_link[ind]
@@ -228,6 +233,8 @@ class Tool:
         if command == 'back' or command == 'menu':
             self.start()
             return
+        elif command == '^Z':
+        	sys.exit()           
         print()
         response = None
         search_str = ''
@@ -359,6 +366,8 @@ class Tool:
             else:
                 self.save_bot.save_song(tbs = response)
             print('File saved to BLyrics_Files directory')
+        elif command == '^Z':
+        	sys.exit()
         self.start()
         
               
