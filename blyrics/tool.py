@@ -367,7 +367,7 @@ class Tool:
                 self.save_bot.save_song(tbs = response)
             print('File saved to BLyrics_Files directory')
         elif command == '^Z':
-        	sys.exit()
+        	sys.exit()	x
         self.start()
         
               
