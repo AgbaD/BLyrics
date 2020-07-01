@@ -60,9 +60,10 @@ class Webpage:
         headline = html.find('div', class_='EditorialPlacement__Title-sc-11ot04a-1 elKqNh').get_text()
         link =  html.find('a', class_= 'EditorialPlacement__Link-sc-11ot04a-2 bCpoMC')
         headline_link = link['href']
-        
+
         other_news_raw = html.find_all('div', class_='EditorialPlacement__Title-sc-11ot04a-1 ABTJt')
         other_links_raw = html.find_all('a', class_="EditorialPlacement__Link-sc-11ot04a-2 hyRooK")
+
         other_news = []
         other_links = []
         for val in other_news_raw:
