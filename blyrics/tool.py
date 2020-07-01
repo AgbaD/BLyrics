@@ -114,6 +114,7 @@ class Tool:
         print('Headline')
         print('1. {}'.format(self.headline))
         print()
+        print(self.other_news_title)
         print('Other News')
         pos = 2
         for i in self.other_news_title:
@@ -367,7 +368,7 @@ class Tool:
                 self.save_bot.save_song(tbs = response)
             print('File saved to BLyrics_Files directory')
         elif command == '^Z':
-        	sys.exit()	x
+        	sys.exit()	
         self.start()
         
               
