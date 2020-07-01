@@ -114,7 +114,6 @@ class Tool:
         print('Headline')
         print('1. {}'.format(self.headline))
         print()
-        print(self.other_news_title)
         print('Other News')
         pos = 2
         for i in self.other_news_title:
