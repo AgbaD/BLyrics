@@ -67,7 +67,8 @@ class Webpage:
         other_news = []
         other_links = []
         for val in other_news_raw:
-            other_news.append(val.text)
+            val = val.text.encode('utf-8')
+            other_news.append(val)
         for val in other_links_raw:
             other_links.append(val['href'])
         print()
