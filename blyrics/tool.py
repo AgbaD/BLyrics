@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Author:   @BlankGodd
+# Author:   @BlankGodd_
 
 from pyfiglet import Figlet
 from search import Search_Genius

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Author:   @BlankGodd
+# Author:   @BlankGodd_
 
 from setuptools import setup
 

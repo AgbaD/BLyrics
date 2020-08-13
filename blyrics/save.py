@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Author:   @BlankGodd
+# Author:   @BlankGodd_
 
 import os
 import json
