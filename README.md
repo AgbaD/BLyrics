@@ -4,6 +4,10 @@ A CLI tool for interacting with Genius
 
 Leveraging the Genius api with python
 
+Use on Telegram
+****
+[t.me/blyrics_bot](https://t.me/blyrics_bot)
+
 ## Screeenshots
 <img src="screenshots/ss1.png" alt="Home page"> 
 
