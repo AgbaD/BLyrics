@@ -48,7 +48,7 @@ class Interact:
                     'per_page' : 23, 'page' : 1}
         access_token = 'Bearer {}'.format(self.access_token)
         headers = {'Authorization': access_token, 'application' : 'BLyrics',
-            'User-Agent':'https://github.com/BlankGodd/BLyrics'}
+            'User-Agent':'https://github.com/AgbaD/BLyrics'}
         
         response = None
         i = 0

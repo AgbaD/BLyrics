@@ -9,12 +9,12 @@ with open('description.rst', 'r') as fh:
 setup(
     name="blyrics",
     version="1.1",
-    author="Damilare Agbabiaka (BlankGodd)",
+    author="Damilare Agbabiaka (AgbaD)",
     author_email="blankgodd33@gmail.com",
     description="Python client for the GENIUS API -     Also for getting latest articles and charts",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/BlankGodd/BLyrics",
+    url="https://github.com/AgbaD/BLyrics",
     py_modules=["blyrics","interact","save","search","tool","web"],
     package_dir = {"":"blyrics"},
     install_requires=[
@@ -44,8 +44,8 @@ setup(
     ],  
     python_requires='>=3.6',
     project_urls={
-        "Bug Reports": "https://github.com/BlankGodd/BLyrics/issues",
-        "Read the Docs": "https://github.com/BlankGodd/BLyrics/wiki",
+        "Bug Reports": "https://github.com/AgbaD/BLyrics/issues",
+        "Read the Docs": "https://github.com/AgbaD/BLyrics/wiki",
     },
     keywords=["music", "lyrics", "mp3", "music charts", "entertainment",
              "genius", "articles"],

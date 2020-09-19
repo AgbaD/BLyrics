@@ -29,7 +29,7 @@ class Webpage:
         Returns:
             - response: response from request.get(url)
         """
-        headers = {'User-Agent': 'https://github.com/BlankGodd/Blyrics',
+        headers = {'User-Agent': 'https://github.com/AgbaD/Blyrics',
                     'application': 'BLyrics'}
         i = 0
         while i < 3: # try reconnecting 2 times if status_Code != 200

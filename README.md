@@ -58,7 +58,7 @@ $ pip3 install blyrics
 ### As script
 1. Clone the repository
 ```sh
-$ git clone https://github.com/BlankGodd/BLyrics.git
+$ git clone https://github.com/AgbaD/BLyrics.git
 
 $ cd BLyrics
 ```
