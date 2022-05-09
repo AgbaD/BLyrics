@@ -57,6 +57,7 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+temp_auto_push.bat
 nosetests.xml
 coverage.xml
 *.cover
