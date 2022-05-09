@@ -57,6 +57,7 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+temp_auto_push.bat
 nosetests.xml
 coverage.xml
 *.cover
@@ -117,3 +118,4 @@ dmypy.json
 
 # End of https://www.gitignore.io/api/python
 
+temp_interactive_push.bat
