@@ -18,7 +18,7 @@ setup(
     py_modules=["blyrics","interact","save","search","tool","web"],
     package_dir = {"":"blyrics"},
     install_requires=[
-        "requests~=2.21.0",
+        "requests>=2.21,<2.32",
         "pyfiglet~=0.8.post1",
         "beautifulsoup4~=4.9.0",
     ],

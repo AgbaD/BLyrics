@@ -2,7 +2,7 @@ beautifulsoup4==4.9.1
 chardet==3.0.4
 idna==2.9
 pyfiglet==0.8.post1
-requests==2.23.0
+requests==2.31.0
 soupsieve==2.0.1
 urllib3==1.26.5
 wget==3.2
