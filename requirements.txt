@@ -4,7 +4,7 @@ idna==2.9
 pyfiglet==0.8.post1
 requests==2.23.0
 soupsieve==2.0.1
-urllib3==1.26.5
+urllib3==2.8.0
 wget==3.2
 
 
